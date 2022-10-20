@@ -18,9 +18,9 @@ header {
 }
 
 #banner {
-    height: 400px;
-    margin-top: 9%;
-    background-image: url('../utils/diwali-banner.jpg');
+    height: 500px;
+    margin-top: 8%;
+    /* background-image: url('../test/banner.jpg'); */
     background-size: 100% 100%;
     background-repeat: no-repeat;
     margin-left: 5%;
@@ -28,21 +28,37 @@ header {
 }
 
 #banner-2 {
-    height: 263px;
-    border: 2px solid red;
-    margin-top: 2%;
+    height: 212px;
+    /* border: 2px solid red; */
+    margin-top: 1%;
 }
 
 #omg-deals {
     height: 358px;
-    border: 2px solid rgb(49, 47, 47);
+    /* border: 2px solid rgb(49, 47, 47); */
+    margin-top: 1%;
+}
+
+#omg-deals div {
+    width: 93%;
+    margin-left: 3.5%;
+}
+
+#omg-deals > div > img:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+
+#budget-buys {
+    height: 240px;
+    /* border: 2px solid rgb(197, 9, 41); */
     margin-top: 2%;
 }
 
-#budget-buys {
-    height: 224px;
-    border: 2px solid rgb(197, 9, 41);
-    margin-top: 2%;
+#budget-buys > div { 
+    width: 96%;
+    margin-left: 2%;
 }
 
 #top-categories {
