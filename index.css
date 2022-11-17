@@ -1,0 +1,157 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+nav {
+    position: fixed !important;
+    top: 0px;
+    width: 100%;
+    box-shadow: 0px 0.1px 5px black;
+}
+
+.my_links>li {
+    margin-right: 5px;
+}
+
+.my_links>li>a {
+    color: black;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: "Poppins";
+    letter-spacing: 0.9;
+}
+
+.my_input {
+    margin-right: 5% !important;
+    width: 34%;
+    margin-top: 10px;
+}
+
+.my_input>input {
+    font-size: 0.9rem;
+    padding-left: 35px;
+}
+
+.my_input>input:focus {
+    outline: none;
+    outline-width: 0px;
+    box-shadow: none;
+}
+
+.my_input>i {
+    position: absolute;
+    margin-top: 10px;
+    font-size: 14px;
+    margin-left: 10px;
+    color: #2a2d40;
+}
+
+.my_icons {
+    width: 14%;
+    justify-content: space-between;
+    height: 100%;
+    margin-right: 2%;
+}
+
+.my_icons>i {
+    font-size: 18px;
+}
+
+#banner {
+    height: 500px;
+    margin-top: 110px;
+    /* background-image: url('../test/banner.jpg'); */
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin-left: 2%;
+    width: 96%;
+}
+
+#banner-2 {
+    height: 212px;
+    margin-top: 1%;
+}
+
+#omg-deals {
+    margin-top: 1%;
+}
+
+#omg-deals div {
+    width: 100%;
+}
+
+#omg-deals>div>img {
+    width: 10%;
+    margin-left: 0.7%;
+    height: 152px;
+    margin-bottom: 15px;
+}
+
+#omg-deals>div>img:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+
+#budget-buys {
+    margin-top: 1%;
+}
+
+#budget-buys>div {
+    width: 100%;
+}
+
+#budget-buys>div>img {
+    width: 10%;
+    margin-left: 0.7%;
+    height: 165px;
+    margin-bottom: 15px;
+}
+
+#budget-buys>div>img:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* #top-categories {
+    margin-top: 1%;
+} */
+
+#top-categories>div>img {
+    width: 16%;
+    height: 315px;
+    margin-left: 4px;
+}
+
+#top-brands {
+    margin-top: 1%;
+}
+
+#top-brands>div>img {
+    width: 12.5%;
+    height: 200px;
+    margin-left: 1.2%;
+    margin-bottom: 1%;
+}
+
+#shop-by-category {
+    margin-top: 1%;
+}
+
+#shop-by-category>div {
+    width: 90%;
+    margin: auto;
+}
+
+#shop-by-category>div>img {
+    width: 14.2%;
+    height: 250px;
+    margin-right: 25px;
+    margin-top: 2.5%;
+}
+
+#my_footer {
+    margin-top: 3%;
+}
