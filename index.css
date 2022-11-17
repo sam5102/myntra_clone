@@ -4,6 +4,11 @@ body {
     font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
+}
+
 nav {
     position: fixed !important;
     top: 0px;
@@ -83,17 +88,12 @@ nav {
 }
 
 #omg-deals>div>img {
-    width: 10%;
-    margin-left: 0.7%;
-    height: 152px;
-    margin-bottom: 15px;
-}
-
-#omg-deals>div>img:hover {
-    transform: scale(1.2);
+    width: 123px;
+    margin-left: 1.5%;
+    height: 150px;
+    margin-bottom: 20px;
     cursor: pointer;
 }
-
 
 #budget-buys {
     margin-top: 1%;
@@ -104,14 +104,14 @@ nav {
 }
 
 #budget-buys>div>img {
-    width: 10%;
+    width: 136px;
     margin-left: 0.7%;
     height: 165px;
     margin-bottom: 15px;
 }
 
 #budget-buys>div>img:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     cursor: pointer;
 }
 
@@ -120,7 +120,7 @@ nav {
 } */
 
 #top-categories>div>img {
-    width: 16%;
+    width: 218px;
     height: 315px;
     margin-left: 4px;
 }
@@ -130,7 +130,7 @@ nav {
 }
 
 #top-brands>div>img {
-    width: 12.5%;
+    width: 170px;
     height: 200px;
     margin-left: 1.2%;
     margin-bottom: 1%;
@@ -146,7 +146,7 @@ nav {
 }
 
 #shop-by-category>div>img {
-    width: 14.2%;
+    width: 174px;
     height: 250px;
     margin-right: 25px;
     margin-top: 2.5%;
