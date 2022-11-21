@@ -14,6 +14,11 @@ nav {
     top: 0px;
     width: 100%;
     box-shadow: 0px 0.1px 5px black;
+    transition: 0.5s;
+}
+
+#nav_bar.dark-mode {
+    background-color: #121212 !important;
 }
 
 .my_links>li {
@@ -26,11 +31,12 @@ nav {
     font-size: 14px;
     font-family: "Poppins";
     letter-spacing: 0.9;
-    transition: 0.6s;
+    transition: 0.5s;
 }
 
 .my_links>li>a.dark-mode {
     color: rgb(222, 237, 238);
+    font-weight: 600;
 }
 
 .my_input {
@@ -78,30 +84,27 @@ nav {
     color: white;
 }
 
-.sun {
-    display: block;
-}
-
-.moon {
+.my_icons > .sun {
     display: none;
 }
 
-.sun.dark-mode {
-    display: none;
+.my_icons > .moon {
+    display: block;
 }
 
-.moon.dark-mode {
+.my_icons > .sun.dark-mode {
     display: block;
+}
+
+.my_icons > .moon.dark-mode {
+    display: none;
 }
 
 #banner {
-    height: 500px;
-    margin-top: 110px;
-    /* background-image: url('../test/banner.jpg'); */
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    margin-left: 2%;
-    width: 96%;
+    height: 530px;
+    margin-top: 7%;
+    margin-left: 1.5%;
+    width: 97%;
 }
 
 #banner-2 {
@@ -114,12 +117,12 @@ nav {
 }
 
 #omg-deals div {
-    width: 96%;
+    width: 98%;
     margin: auto;
 }
 
 #omg-deals>div>img {
-    width: 123px;
+    min-width: 125px;
     margin-right: 18px;
     height: 150px;
     margin-bottom: 20px;
@@ -135,9 +138,8 @@ nav {
 }
 
 #budget-buys>div>img {
-    width: 136px;
-    margin-left: 0.7%;
-    height: 165px;
+    width: 10.5%;
+    height: 170px;
     margin-bottom: 15px;
 }
 
@@ -154,6 +156,7 @@ nav {
     width: 218px;
     height: 315px;
     margin-left: 4px;
+    margin-bottom: 10px;
 }
 
 #top-brands {
@@ -180,6 +183,7 @@ nav {
     width: 174px;
     height: 250px;
     margin-right: 25px;
+    margin-bottom: 25px;
 }
 
 #my_footer {
