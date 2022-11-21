@@ -5,6 +5,8 @@
         <link rel="stylesheet" href="./index.css">
         <link rel="shortcut icon" href="./utils/myntra-logo.png" type="image/x-icon">
 
+        <script type="text/javascript" src="index.js"></script>
+
         <!--Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -24,7 +26,7 @@
     <body>
         <!-- Header/Navbar -->
 
-        <nav class="navbar navbar-expand-lg bg-light">
+        <nav class="navbar navbar-expand-lg bg-light"  id="nav_bar">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                     <img src="./utils/myntra-logo.png" alt="logo" id="logo" height="50px" width="80px" style="margin-top: 5px;">
@@ -36,22 +38,22 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 my_links">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">MEN</a>
+                            <a class="nav-link active" aria-current="page" href="#" id="a_tag">MEN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">WOMEN</a>
+                            <a class="nav-link" href="#" id="a_tag">WOMEN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">KIDS</a>
+                            <a class="nav-link" href="#" id="a_tag">KIDS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">HOME & LIVING</a>
+                            <a class="nav-link" href="#" id="a_tag">HOME & LIVING</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">BEAUTY</a>
+                            <a class="nav-link" href="#" id="a_tag">BEAUTY</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">STUDIO</a>
+                            <a class="nav-link" href="#" id="a_tag">STUDIO</a>
                         </li>
                     </ul>
                     <form role="search" class="my_input">
@@ -59,11 +61,11 @@
                             <input class="form-control me-2" type="search" placeholder="Search for products, brands and more" aria-label="Search">                        
                     </form>
                     <div class="d-flex my_icons">
-                        <i class="fa-regular fa-user"></i>
-                        <i class="fa-regular fa-heart"></i>
-                        <i class="fa-sharp fa-solid fa-bag-shopping"></i>
-                        <i class="fa-solid fa-moon"></i>
-                        <!-- <i class="fa-solid fa-sun" style="display: none;" onclick="toggleTheme()"></i> -->
+                        <i class="fa-regular fa-user" id="nav_icon"></i>
+                        <i class="fa-regular fa-heart" id="nav_icon"></i>
+                        <i class="fa-sharp fa-solid fa-bag-shopping" id="nav_icon"></i>
+                        <i class="fa-solid fa-moon moon" id="nav_icon" onclick="toggleTheme()"></i>
+                        <i class="fa-solid fa-sun sun" id="nav_icon" style="display: none" onclick="toggleTheme()"></i>
                     </div>
                 </div>
             </div>
@@ -105,7 +107,8 @@
 
         <!-- OMG Deals -->
         <section id="omg-deals">
-            <img src="./utils/omg data/omg.jpg" alt="banner" height="175px" width="40%" style="margin-left: 30%;">
+            <img src="./utils/omg data/omg.jpg" alt="omg-deals" height="175px" width="40%" 
+            style="margin-left: 30%;">
             <div >
                 <img src="./utils/omg data/1.png" alt="image-1">
                 <img src="./utils/omg data/2.png" alt="image-2">
@@ -122,7 +125,7 @@
 
         <!-- Budget Buys -->
         <section id="budget-buys">
-            <img src="./utils/budget buys/budget-buy.jpg" alt="banner" height="130px" width="40%" style="margin-left: 30%">
+            <img src="./utils/budget buys/budget-buy.jpg" alt="budget-buys" height="130px" width="40%" style="margin-left: 30%">
             <div>
                 <img src="./utils/budget buys/2.jpg" alt="image-2">
                 <img src="./utils/budget buys/3.png" alt="image-3">
@@ -136,9 +139,9 @@
             </div>
         </section>
 
-        <!-- Top Categories -->
+        <!-- Most Loved Brands -->
         <section id="top-categories">
-            <img src="./utils/top categories/1.png" alt="banner" height="95px" width="100%">
+            <img src="./utils/top categories/1.jpeg" alt="most-loved-brands" height="135px" width="38%" style="margin-left: 31%; margin-bottom: 30px;">
             <div>
                 <img src="./utils/top categories/2.png" alt="image-2">
                 <img src="./utils/top categories/3.png" alt="image-3">
@@ -157,9 +160,9 @@
             </div>
         </section>
 
-        <!-- Most Loved Brands At Best Price -->
+        <!-- Top Brands on offer -->
         <section id="top-brands">
-            <img src="./utils/top brands/1.png" alt="banner" height="95px" width="100%">
+            <img src="./utils/top brands/1.jpeg" alt="top-brands-on-offer" height="150px" width="41%" style="margin-left: 30%; margin-bottom: 30px; border-radius: 11px;">
             <div>
                 <img src="./utils/top brands/2.png" alt="image-2" height="149px" width="113px">
                 <img src="./utils/top brands/3.png" alt="image-3" height="149px" width="113px">
@@ -173,7 +176,7 @@
 
         <!-- Shop By Category -->
         <section id="shop-by-category">
-            <img src="./utils/shop by category/1.png" alt="banner" height="95px" width="100%">
+            <img src="./utils/shop by category/1.jpeg" alt="shop-by-category" height="150px" width="36%" style="margin-left: 32%">
             <div>
                 <img src="./utils/shop by category/croped/2.png" alt="image-2" height="149px" width="113px">
                 <img src="./utils/shop by category/croped/3.png" alt="image-2" height="149px" width="113px">
@@ -247,7 +250,6 @@
                                 Prestige Atlanta, 80 Feet Rd, Koramangala 1A Block, Koramangala 3 Block, Koramangala, Bengaluru, Karnataka 560034
                             </p>
                         </div>
-                        <!-- Grid column -->
         
                         <!-- Grid column -->
                         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
@@ -314,9 +316,7 @@
                 <a class="text-reset fw-bold" href="https://myntra.com/" style="text-decoration: none;">www.myntra.com.</a>
                 All Rights Reserved
             </div>
-            <!-- Copyright -->
         </footer>
-        <!-- Footer -->
     </body>
 
 </html>
