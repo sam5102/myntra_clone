@@ -48,6 +48,7 @@ nav {
 .my_input>input {
     font-size: 0.9rem;
     padding-left: 35px;
+    padding-right: 30px;
 }
 
 .my_input>input:focus {
@@ -62,6 +63,12 @@ nav {
     font-size: 14px;
     margin-left: 10px;
     color: #2a2d40;
+}
+
+#sun, #moon {
+    position: absolute;
+    margin-left: 395px;
+    cursor: pointer;
 }
 
 .my_icons {
@@ -84,19 +91,19 @@ nav {
     color: white;
 }
 
-.my_icons > .sun {
+#sun {
     display: none;
 }
 
-.my_icons > .moon {
+#moon {
     display: block;
 }
 
-.my_icons > .sun.dark-mode {
+#sun.dark-mode {
     display: block;
 }
 
-.my_icons > .moon.dark-mode {
+#moon.dark-mode {
     display: none;
 }
 
@@ -188,4 +195,51 @@ nav {
 
 #my_footer {
     margin-top: 3%;
+}
+
+
+#coupon {
+    height: 450px;
+    width: 350px;
+    position: absolute;
+    background-color: rgb(179, 12, 12);
+    margin-left: 38%;
+    margin-top: 2%;
+    z-index: 100;
+    display: none;
+    animation: 3s ease-out 0s 1 wait, 0.21s ease-out 3s ;
+}
+
+#coupon_close {
+    position: absolute;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: 600;
+    float: right;
+    top: -16px;
+    cursor: pointer;
+    left: 96%;
+    color: #fe5663;
+    background: #360d0d;
+}
+
+
+/* //for small devices */
+@media (max-device-width: 480px) {
+
+    #logo {
+        height: 80px;
+        width: 100px;
+    }
+    #nav_bar {
+        height: 115px;
+    }
+
+    #banner {
+        height: 580px;
+        margin-top: 17%;
+        width: 100%;
+        margin-left: 0;
+    }
 }

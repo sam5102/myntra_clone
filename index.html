@@ -16,9 +16,7 @@
             </script>
         
         <!--Google Font - Poppins -->
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;1,100;1,200&display=swap"
-            rel="stylesheet">
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;1,100;1,200&display=swap" rel="stylesheet">
 
 
         <!--Font Awesome Icons -->
@@ -27,7 +25,15 @@
 
     <body>
         <!-- Header/Navbar -->
+        <div id="coupon">
+            <div style="position: relative;">
+                <button id="coupon_close" onClick="closeCoupon()">&times;</button>
+            </div>
+            
+            <img src="./utils/coupon/coupon.jpg" id="coupon_img" alt="coupon_page" height="100%" width="100%">
+        </div>
 
+        <div id="main">
         <nav class="navbar navbar-expand-lg bg-light" id="nav_bar">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
@@ -40,7 +46,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 my_links">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#" id="a_tag">MEN</a>
+                            <a class="nav-link active" aria-current="page" target="_blank" href="./pages/mens.html" id="a_tag">MEN</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#" id="a_tag">WOMEN</a>
@@ -60,14 +66,16 @@
                     </ul>
                     <form role="search" class="my_input">
                             <i class="fa-solid fa-magnifying-glass"></i>
-                            <input class="form-control me-2" type="search" placeholder="Search for products, brands and more" aria-label="Search">                        
+                            <i class="fa-solid fa-moon moon" id="moon" onclick="toggleTheme()"></i>
+                            <i class="fa-solid fa-sun sun" id="sun" onclick="toggleTheme()"></i>
+                            <input class="form-control me-2" type="search" placeholder="Search for products, brands and more" aria-label="Search">     
+                            
                     </form>
                     <div class="d-flex my_icons">
                         <i class="fa-regular fa-user" id="nav_icon"></i>
                         <i class="fa-regular fa-heart" id="nav_icon"></i>
                         <i class="fa-sharp fa-solid fa-bag-shopping" id="nav_icon"></i>
-                        <i class="fa-solid fa-moon moon" id="nav_icon" onclick="toggleTheme()"></i>
-                        <i class="fa-solid fa-sun sun" id="nav_icon" onclick="toggleTheme()"></i>
+                        
                     </div>
                 </div>
             </div>
@@ -180,7 +188,7 @@
                 <img src="./utils/shop by category/croped/21.png" alt="image-2" height="149px" width="113px">
             </div>
         </section>
-
+</div>
         <!-- <footer>
             <center>&copy; Copyright Myntra || All Rights Reserved</center>
         </footer> -->
@@ -297,6 +305,9 @@
                 All Rights Reserved
             </div>
         </footer>
+        <script>
+            window.onload = loadCoupon();
+        </script>
     </body>
 
 </html>
