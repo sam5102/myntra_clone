@@ -27,13 +27,17 @@ const toggleTheme = () => {
 //for coupon information
 async function loadCoupon() {
     document.getElementById('coupon').style.display = 'block';
+    document.getElementById('coupon').style.marginTop = '0px';
+    document.body.style.overflow = 'hidden';
+    document.getElementById('coupon').style.transition = '3s ease-out 0s 1 wait, 0.21s ease-out 3s';
     document.getElementById('main').style.opacity = '0.6';
     checkLocation()
 }
 
 function closeCoupon(){
     document.getElementById('coupon').style.display = 'none';
-    document.getElementById('main').style.opacity='1';
+    document.getElementById('main').style.opacity = '1';
+    document.body.style.overflow = 'scroll';
 }
 
 //geo location

@@ -204,11 +204,12 @@ nav {
     position: absolute;
     background-color: rgb(179, 12, 12);
     margin-left: 38%;
-    margin-top: 2%;
+    margin-top: -550px;
     z-index: 100;
     display: none;
-    animation: 3s ease-out 0s 1 wait, 0.21s ease-out 3s ;
+    transition: 3s ease-out 0s 1 wait, 0.21s ease-out 3s ;
 }
+
 
 #coupon_close {
     position: absolute;
