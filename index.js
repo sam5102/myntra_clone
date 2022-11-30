@@ -1,13 +1,16 @@
 const toggleTheme = () => {
     const body = document.body;
     const nav = document.getElementById("nav_bar")
+    const footer = document.getElementById("my_footer");
     const a_tag = document.querySelectorAll("[id='a_tag']")
     const moon = document.getElementById("moon")
     const sun = document.getElementById("sun")
     
+    body.classList.toggle('dark-mode')
     nav.classList.toggle('dark-mode')
     moon.classList.toggle("dark-mode")
     sun.classList.toggle("dark-mode")
+    footer.classList.toggle('dark-mode')
     
     for (let i = 0; i < a_tag.length; i++) {
         const element = a_tag[i];
@@ -29,7 +32,6 @@ async function loadCoupon() {
     document.getElementById('coupon').style.display = 'block';
     document.getElementById('coupon').style.marginTop = '0px';
     document.body.style.overflow = 'hidden';
-    document.getElementById('coupon').style.transition = '3s ease-out 0s 1 wait, 0.21s ease-out 3s';
     document.getElementById('main').style.opacity = '0.6';
     checkLocation()
 }
