@@ -68,17 +68,19 @@
                         </li>
                     </ul>
                     <form role="search" class="my_input">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <i class="fa-solid fa-moon moon" id="moon" onclick="toggleTheme()"></i>
-                            <i class="fa-solid fa-sun sun" id="sun" onclick="toggleTheme()"></i>
-                            <input class="form-control me-2" type="search" placeholder="Search for products, brands and more" aria-label="Search">     
-                            
+                        <i class="fa-solid fa-magnifying-glass" id="search_icon"></i>
+                        <i class="fa-solid fa-moon moon" id="moon" onclick="toggleTheme()"></i>
+                        <i class="fa-solid fa-sun sun" id="sun" onclick="toggleTheme()"></i>
+                        <input class="form-control me-2" type="search" placeholder="Search for products, brands and more" aria-label="Search"></input>
                     </form>
                     <div class="d-flex my_icons">
                         <i class="fa-regular fa-user" id="nav_icon"></i>
                         <i class="fa-regular fa-heart" id="nav_icon"></i>
                         <i class="fa-sharp fa-solid fa-bag-shopping" id="nav_icon"></i>
-                        
+                        <div>
+                            <i class="fa-solid fa-cloud" id="nav_icon" style="margin-top: 3px;"></i>
+                            <p id="weather-info">0&#8451;</p>
+                        </div>
                     </div>
                 </div>
             </div>
