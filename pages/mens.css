@@ -4,14 +4,70 @@ body {
     box-sizing: border-box;
 }
 
+.contner {
+    display: flex;
+    flex-direction: row;
+}
+
 #filter {
-    width: 20%;
+    width: 19%;
     display: inline-block;
     border-right: 1px solid black;
     height: 100%;
+    position: fixed;
+    background: #f7f7f785;
+}
+
+#filter > h4 {
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 15px;
+    margin-left: 15px;
+    font-size: 18px;
+}
+
+#filter>h5 {
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 15px;
+    margin-left: 15px;
+    font-size: 15px;
+    color: #540808;
+    margin-bottom: 15px;
+}
+
+#filter>div {
+    margin-bottom: 5px;
+}
+
+#filter> div > input {
+    margin-left: 15px;
+    padding-right: 15px;
+    font-size: 12px;
+}
+
+#filter> div > span {
+    margin-left: 10px;
+    color: #5e333f;
 }
 
 #content {
-    width: 80%;
-    display: inline;
+    width: 81%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-left: 19%;
+}
+
+.card {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+#pagination {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
