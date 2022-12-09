@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "category": "Fashion",
+    "rating": "4.5"
+  },
+  {
+    "id": 2,
+    "category": "Body Care",
+    "rating": "3.5"
+  },
+  {
+    "id": 3,
+    "category": "HouseHold",
+    "rating": "3.0"
+  },
+  {
+    "id": 4,
+    "category": "Decoration & Lighting",
+    "rating": "2.5"
+  },
+  {
+    "id": 5,
+    "category": "Gadgets",
+    "rating": "2.5"
+  }
+]
