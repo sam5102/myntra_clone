@@ -49,6 +49,7 @@ nav {
     margin-right: 4% !important;
     width: 34%;
     margin-top: 10px;
+    position: relative;
 }
 
 .my_input>input {
@@ -73,7 +74,8 @@ nav {
 
 #sun, #moon {
     position: absolute;
-    margin-left: 29%;
+    margin-right: 12px;
+    right: 0px;
     cursor: pointer;
     margin-top: 10px;
     font-size: 14px;

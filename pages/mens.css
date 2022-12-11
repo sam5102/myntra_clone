@@ -62,6 +62,44 @@ body {
 .card {
     margin-top: 20px;
     margin-bottom: 15px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#wishlist {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    background: azure;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0px;
+    margin-right: 10px;
+    top: 7px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+
+#wishlist > i:hover {
+    font-size: 18px;
+    color: rgba(62, 43, 108, 1);
+}
+
+#rating {
+    position: absolute;
+    width: 50px;
+    background: #dff2f3;
+    height: 20px;
+    bottom: 0px;
+    margin-left: 6;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-family: cursive;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 #pagination {
