@@ -1,0 +1,318 @@
+<html>
+
+    <head>
+        <title>Myntra clone</title>
+        <link rel="stylesheet" href="./index.css">
+        <link rel="shortcut icon" href="./utils/myntra-logo.png" type="image">
+
+        <script type="text/javascript" src="index.js"></script>
+
+        <!--Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+            </script>
+        
+        <!--Google Font - Poppins -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;1,100;1,200&display=swap" rel="stylesheet">
+
+
+        <!--Font Awesome Icons -->
+        <script src="https://kit.fontawesome.com/c8002c696b.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <!-- Header/Navbar -->
+        <div>
+            <div id="coupon" style="position: fixed;">
+                <div style="position: relative;">
+                    <button id="coupon_close" onClick="closeCoupon()">&times;</button>
+                </div>
+            
+                <img src="./utils/coupon/coupon.jpg" id="coupon_img" alt="coupon_page" height="100%" width="100%">
+            </div>
+        </div>
+        
+
+        <div id="main">
+        <nav class="navbar navbar-expand-lg bg-light" id="nav_bar">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="./utils/myntra-logo.png" alt="logo" id="logo" height="50px" width="80px" style="margin-top: 5px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 my_links">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" target="_blank" href="./pages/mens.html" id="a_tag">MEN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="a_tag">WOMEN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="a_tag">KIDS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="a_tag">HOME & LIVING</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="a_tag">BEAUTY</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="a_tag">STUDIO</a>
+                        </li>
+                    </ul>
+                    <form role="search" class="my_input">
+                        <i class="fa-solid fa-magnifying-glass" id="search_icon"></i>
+                        <i class="fa-solid fa-moon moon" id="moon" onclick="toggleTheme()"></i>
+                        <i class="fa-solid fa-sun sun" id="sun" onclick="toggleTheme()"></i>
+                        <input class="form-control me-2" type="search" placeholder="Search for products, brands and more" aria-label="Search"></input>
+                    </form>
+                    <div class="d-flex my_icons">
+                        <i class="fa-regular fa-user" id="nav_icon"></i>
+                        <i class="fa-regular fa-heart" id="nav_icon"></i>
+                        <i class="fa-sharp fa-solid fa-bag-shopping" id="nav_icon"></i>
+                        <div data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on bottom">
+                            <i class="fa-solid fa-cloud" id="nav_icon" style="margin-top: 3px;"></i>
+                            <p id="weather-info">0&#8451;</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+
+        <!-- Background Banner -->
+        <section id="banner">
+            <img src="./utils/banners/banner.png" alt="banner" height="100%" width="100%">
+        </section>
+
+        <!-- Background Banner Section - 2 -->
+        <section id="banner-2">
+            <img src="./utils/banners/banner-3.gif" alt="banner" height="100%" width="100%">
+        </section>
+
+        <!-- OMG Deals -->
+        <section id="omg-deals">
+            <img src="./utils/omg data/omg.jpg" alt="omg-deals" height="135px" width="40%" 
+            style="margin-left: 30%; margin-bottom: 30px; margin-top: 20px; border-radius: 11px;">
+            <div >
+                <img src="./utils/omg data/1.png" alt="image-1" style="margin-left: 10px;">
+                <img src="./utils/omg data/2.png" alt="image-2">
+                <img src="./utils/omg data/4.png" alt="image-4">
+                <img src="./utils/omg data/5.png" alt="image-5">
+                <img src="./utils/omg data/6.png" alt="image-6">
+                <img src="./utils/omg data/7.png" alt="image-7">
+                <img src="./utils/omg data/8.png" alt="image-8">
+                <img src="./utils/omg data/9.png" alt="image-9">
+                <img src="./utils/omg data/10.png" alt="image-10">
+            </div>
+            
+        </section>
+
+        <!-- Budget Buys -->
+        <section id="budget-buys">
+            <img src="./utils/budget buys/budget-buy.jpg" alt="budget-buys" height="130px" width="40%" style="margin-left: 30%; margin-bottom: 30px; margin-top: 7px; border-radius: 11px;">
+            <div>
+                <img src="./utils/budget buys/2.jpg" alt="image-2" style="margin-left: 15px;">
+                <img src="./utils/budget buys/3.png" alt="image-3">
+                <img src="./utils/budget buys/4.png" alt="image-4">
+                <img src="./utils/budget buys/5.png" alt="image-5">
+                <img src="./utils/budget buys/7.png" alt="image-7">
+                <img src="./utils/budget buys/8.png" alt="image-8">
+                <img src="./utils/budget buys/9.png" alt="image-9">
+                <img src="./utils/budget buys/10.png" alt="image-10">
+                <img src="./utils/budget buys/11.png" alt="image-11">
+                <i class="fa-light fa-sun-bright"></i>
+            </div>
+        </section>
+
+        <!-- Most Loved Brands -->
+        <section id="top-categories">
+            <img src="./utils/top categories/1.jpeg" alt="most-loved-brands" height="135px" width="41%" style="margin-left: 30%; margin-bottom: 30px; margin-top: 20px; border-radius: 11px;">
+            <div>
+                <img src="./utils/top categories/2.png" alt="image-2">
+                <img src="./utils/top categories/3.png" alt="image-3">
+                <img src="./utils/top categories/4.png" alt="image-4">
+                <img src="./utils/top categories/5.png" alt="image-5">
+                <img src="./utils/top categories/6.png" alt="image-6">
+                <img src="./utils/top categories/7.png" alt="image-7">
+                <img src="./utils/top categories/8.png" alt="image-8">
+                <img src="./utils/top categories/9.png" alt="image-9">
+                <img src="./utils/top categories/10.png" alt="image-10">
+                <img src="./utils/top categories/11.png" alt="image-11">
+                <img src="./utils/top categories/12.png" alt="image-12">
+                <img src="./utils/top categories/13.png" alt="image-13">
+                <img src="./utils/top categories/14.png" alt="image-14">
+                <img src="./utils/top categories/15.png" alt="image-14">
+            </div>
+        </section>
+
+        <!-- Top Brands on offer -->
+        <section id="top-brands">
+            <img src="./utils/top brands/1.jpeg" alt="top-brands-on-offer" height="135px" width="41%" style="margin-left: 30%; margin-bottom: 30px; border-radius: 11px;">
+            <div>
+                <img src="./utils/top brands/2.png" alt="image-2" height="149px" width="113px">
+                <img src="./utils/top brands/3.png" alt="image-3" height="149px" width="113px">
+                <img src="./utils/top brands/4.png" alt="image-4" height="149px" width="113px">
+                <img src="./utils/top brands/5.png" alt="image-5" height="149px" width="113px">
+                <img src="./utils/top brands/6.png" alt="image-6" height="149px" width="113px">
+                <img src="./utils/top brands/7.png" alt="image-7" height="149px" width="113px">
+                <img src="./utils/top brands/8.png" alt="image-8" height="149px" width="113px">
+            </div>
+        </section>
+
+        <!-- Shop By Category -->
+        <section id="shop-by-category">
+            <img src="./utils/shop by category/1.jpeg" alt="shop-by-category" height="135px" width="41%" style="margin-left: 30%; margin-bottom: 30px; margin-top: 20px; border-radius: 11px;">
+            <div>
+                <img src="./utils/shop by category/croped/2.png" alt="image-2" height="149px" width="113px">
+                <img src="./utils/shop by category/croped/3.png" alt="image-2" height="149px" width="113px">
+                <img src="./utils/shop by category/croped/4.png" alt="image-2" height="149px" width="113px">
+                <img src="./utils/shop by category/croped/5.png" alt="image-2" height="149px" width="113px">
+                <img src="./utils/shop by category/croped/6.png" alt="image-2" height="149px" width="113px">
+                <img src="./utils/shop by category/croped/7.png" alt="image-2" height="149px" width="113px">
+                <img src="./utils/shop by category/croped/8.png" alt="image-2" height="149px" width="113px">
+                <img src="./utils/shop by category/croped/9.png" alt="image-2" height="149px" width="113px">
+                <img src="./utils/shop by category/croped/10.png" alt="image-2" height="149px" width="113px">
+                <img src="./utils/shop by category/croped/11.png" alt="image-2" height="149px" width="113px">
+                <img src="./utils/shop by category/croped/12.png" alt="image-2" height="149px" width="113px">
+                <img src="./utils/shop by category/croped/13.png" alt="image-2" height="149px" width="113px">
+                <img src="./utils/shop by category/croped/14.png" alt="image-2" height="149px" width="113px">
+                <img src="./utils/shop by category/croped/15.png" alt="image-2" height="149px" width="113px">
+                <img src="./utils/shop by category/croped/16.png" alt="image-2" height="149px" width="113px">
+                <img src="./utils/shop by category/croped/17.png" alt="image-2" height="149px" width="113px">
+                <img src="./utils/shop by category/croped/18.png" alt="image-2" height="149px" width="113px">
+                <img src="./utils/shop by category/croped/19.png" alt="image-2" height="149px" width="113px">
+                <img src="./utils/shop by category/croped/20.png" alt="image-2" height="149px" width="113px">
+                <img src="./utils/shop by category/croped/21.png" alt="image-2" height="149px" width="113px">
+            </div>
+        </section>
+</div>
+        <!-- <footer>
+            <center>&copy; Copyright Myntra || All Rights Reserved</center>
+        </footer> -->
+
+        <!-- Footer -->
+        <footer class="text-center text-lg-start bg-light text-muted" id="my_footer">
+            <!-- Section: Social media -->
+            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+                <!-- Left -->
+                <div class="me-5 d-none d-lg-block">
+                    <span>Get connected with us on social networks:</span>
+                </div>
+                <!-- Left -->
+        
+                <!-- Right -->
+                <div>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+ 
+                </div>
+                <!-- Right -->
+            </section>
+            <!-- Section: Social media -->
+        
+            <!-- Section: Links  -->
+            <section class="">
+                <div class="container text-center text-md-start mt-5">
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <!-- Content -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                </i>Myntra Designs Pvt. Ltd.
+                            </h6>
+                            <p>
+                                Prestige Atlanta, 80 Feet Rd, Koramangala 1A Block, Koramangala 3 Block, Koramangala, Bengaluru, Karnataka 560034
+                            </p>
+                        </div>
+        
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4" style="color: #282c3f; font-size: 15px">
+                                Popular Search
+                            </h6>
+                            <p>
+                                <a href="#!" class="text-reset" style="text-decoration: none;">Makeup</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset" style="text-decoration: none;">Dresses</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset" style="text-decoration: none;">Sandals</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset" style="text-decoration: none;">Shoes</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset" style="text-decoration: none;">Jewellery</a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+        
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4" style="color: #282c3f; font-size: 15px">
+                                Useful links
+                            </h6>
+                            <p>
+                                <a href="#!" class="text-reset" style="text-decoration: none;">Blog</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset" style="text-decoration: none;">Carrers</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset" style="text-decoration: none;">Site Map</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset" style="text-decoration: none;">Help</a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+        
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <!-- Links -->
+                            <img src="./utils/footer/google_play.png" alt="Download From Google Play Store" style="height: 40px; margin-bottom: 15px;">
+                            <img src="./utils/footer/apple_store.png" alt="Download From App Store" 
+                            style="height: 45px; width: 133px">
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                </div>
+            </section>
+            <!-- Section: Links  -->
+        
+            <!-- Copyright -->
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                © 2022 Copyright:
+                <a class="text-reset fw-bold" href="https://myntra.com/" style="text-decoration: none;">www.myntra.com.</a>
+                All Rights Reserved
+            </div>
+        </footer>
+        <script>
+            window.onload = loadCoupon();
+        </script>
+    </body>
+
+</html>

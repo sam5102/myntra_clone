@@ -1,0 +1,227 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myntra</title>
+    <link rel="stylesheet" href="./mens.css">
+
+    <!--Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+    <script src="./mens.js"></script>
+    
+    <!--Google Font - Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;1,100;1,200&display=swap"
+        rel="stylesheet">
+    
+    <!--Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/c8002c696b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="contner">
+        <div id="filter">
+            <h4>Filters</h4>
+            <hr>
+            <!-- <div>
+                <input type="radio" name="options" id="all">Men
+            </div>
+            <div>
+                <input type="radio" name="options" id="north indian">Women
+            </div>
+            <div>
+                <input type="radio" name="options" id="south indian">Boys
+            </div>
+            <div>
+                <input type="radio" name="options" id="chinese">Girls
+            </div>
+            <div>
+                <input type="radio" name="options" id="fast-food">Kids
+            </div> -->
+            
+            <h5>Brands</h5>
+            <div>
+                <input type="radio" name="options" id="all"><span>Roadster<span>
+            </div>
+            <div>
+                <input type="radio" name="options" id="north indian"><span>Allen Solly</span>
+            </div>
+            <div>
+                <input type="radio" name="options" id="south indian"><span>Louis Phillipe</span>
+            </div>
+            <div>
+                <input type="radio" name="options" id="chinese"><span>Arrow</span>
+            </div>
+            <div>
+                <input type="radio" name="options" id="fast-food"><span>Van Heusen</span>
+            </div>
+            <hr>
+            <h5>Price</h5>
+            <div>
+                <input type="radio" name="options" id="all"><span>Rs. 226 to Rs. 5920</span>
+            </div>
+            <div>
+                <input type="radio" name="options" id="north indian"><span>Rs. 5920 to Rs. 11614</span>
+            </div>
+            <div>
+                <input type="radio" name="options" id="south indian"><span>Rs. 11614 to Rs. 17308</span>
+            </div>
+       
+            <hr>
+            <h5>Color</h5>
+            <div>
+                <input type="radio" name="options" id="all"><span>Blue</span>
+            </div>
+            <div>
+                <input type="radio" name="options" id="north indian"><span>White</span>
+            </div>
+            <div>
+                <input type="radio" name="options" id="south indian"><span>Navy Blue</span>
+            </div>
+            <div>
+                <input type="radio" name="options" id="chinese"><span>Green</span>
+            </div>
+            <div>
+                <input type="radio" name="options" id="fast-food"><span>Black</span>
+            </div>
+            <div>
+                <input type="radio" name="options" id="street-food"><span>Grey</span>
+            </div>
+            <div>
+                <input type="radio" name="options" id="street-food"><span>Pink</span>
+            </div>
+
+        </div>
+
+        <div id="content" onmouseover="changeImage()">
+            <div class="card" style="width: 18rem;">
+            <div style="position: relative;">
+                <img id="card_img" src="./images/1.png" class="card-img-top" alt="model" height="340px">
+                <div id="wishlist"><i class="fa-regular fa-heart"></i></div>
+                <div id="rating"><span>4.2 <i class="fa-regular fa-star"></span></i></div>
+            </div>
+                <div class="card-body">
+                    <h5 class="card-title" style="font-weight: 600;">Roadster</h5>
+                    <p class="card-text">Pure Cotton T-shirt</p>
+                    <p class="card-text">Rs. 249 <s>Rs 499</s> <span>(50% OFF)<span></p>
+                </div>
+                
+                <!-- <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div> -->
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <div style="position: relative;">
+                    <img src="./images/2.png" class="card-img-top" alt="model" height="340px">
+                    <div id="wishlist"><i class="fa-regular fa-heart"></i></div>
+                    <div id="rating"><span>4.8 <i class="fa-regular fa-star"></span></i></div>
+                </div>
+                
+                <div class="card-body">
+                    <h5 class="card-title" style="font-weight: 600;">Louis Philippe Jeans</h5>
+                    <p class="card-text">Men Printed Slim Fit T-shirt</p>
+                    <p class="card-text">Rs. 618 <s>Rs. 1049</s> <span>(41% OFF)<span></p>
+                </div>
+                
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <div style="position: relative;">
+                    <img src="./images/3.png" class="card-img-top" alt="model" height="340px">
+                    <div id="wishlist"><i class="fa-regular fa-heart"></i></div>
+                    <div id="rating"><span>3.5 <i class="fa-regular fa-star"></span></i></div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title" style="font-weight: 600;">Urbano Fashion</h5>
+                    <p class="card-text">Slim Tropical Printed T-Shirt</p>
+                    <p class="card-text">Rs. 494 <s>Rs. 1099</s> <span>(55% OFF)<span></p>
+                </div>
+                
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <div style="position: relative;">
+                    <img src="./images/4.png" class="card-img-top" alt="model" height="340px">
+                    <div id="wishlist"><i class="fa-regular fa-heart"></i></div>
+                    <div id="rating"><span>4.0 <i class="fa-regular fa-star"></span></i></div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title" style="font-weight: 600;">Huetrap</h5>
+                    <p class="card-text">Typography Print T-Shirt</p>
+                    <p class="card-text">Rs. 340 <s>Rs. 1099</s> <span>(69% OFF)<span></p>
+                </div>
+                
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <div style="position: relative;">
+                    <img src="./images/5.png" class="card-img-top" alt="model" height="340px">
+                    <div id="wishlist"><i class="fa-regular fa-heart"></i></div>
+                    <div id="rating"><span>4.2 <i class="fa-regular fa-star"></span></i></div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title" style="font-weight: 600;">Louis Philippe Sport</h5>
+                    <p class="card-text">Men Polo Collar Slim T-Shirt</p>
+                    <p class="card-text">Rs. 779 <s>Rs. 1299</s> <span>(40% OFF)<span></p>
+                </div>
+                
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <div style="position: relative;">
+                    <img src="./images/6.png" class="card-img-top" alt="model" height="340px">
+                    <div id="wishlist"><i class="fa-regular fa-heart"></i></div>
+                    <div id="rating"><span>4.9 <i class="fa-regular fa-star"></span></i></div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title" style="font-weight: 600;">Roadster</h5>
+                    <p class="card-text">Solid Scoop Neck T-Shirt</p>
+                    <p class="card-text">Rs. 174 <s>Rs. 499</s> <span>(65% OFF)<span></p>
+                </div>
+                
+            </div>
+
+            <nav aria-label="Page navigation example" id="pagination">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item"><a class="page-link" href="#">6</a></li>
+                    <li class="page-item"><a class="page-link" href="#">7</a></li>
+                    <li class="page-item"><a class="page-link" href="#">8</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <footer class="bg-light text-center text-lg-start" style="width: 100%;">
+                <!-- Copyright -->
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                    © 2022 Copyright:
+                    <a class="text-dark" href="https://myntra.com/">Myntra.com</a>
+                </div>
+                <!-- Copyright -->
+            </footer>
+        </div>
+
+    </div>
+    
+</body>
+</html>

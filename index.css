@@ -1,0 +1,274 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+body.dark-mode {
+    /* background-color: #212529; */
+    background-color: black;
+    transition: 0.5s;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
+}
+
+nav {
+    position: fixed !important;
+    top: 0px;
+    width: 100%;
+    box-shadow: 0px 2px 5px rgb(0 0 0 / 60%);
+    transition: 0.5s;
+}
+
+#nav_bar.dark-mode {
+    background-color: #121212 !important;
+}
+
+.my_links>li {
+    margin-right: 5px;
+}
+
+.my_links>li>a {
+    color: black;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: "Poppins";
+    letter-spacing: 0.9;
+    transition: 0.5s;
+}
+
+.my_links>li>a.dark-mode {
+    color: rgba(235, 217, 217, 0.966);
+    font-weight: 600;
+}
+
+.my_input {
+    margin-right: 4% !important;
+    width: 34%;
+    margin-top: 10px;
+    position: relative;
+}
+
+.my_input>input {
+    font-size: 0.9rem;
+    padding-left: 35px;
+    padding-right: 30px;
+}
+
+.my_input>input:focus {
+    outline: none;
+    outline-width: 0px;
+    box-shadow: none;
+}
+
+.my_input> #search_icon {
+    position: absolute;
+    margin-top: 10px;
+    font-size: 14px;
+    margin-left: 10px;
+    color: #2a2d40;
+}
+
+#sun, #moon {
+    position: absolute;
+    margin-right: 12px;
+    right: 0px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.my_icons {
+    width: 14%;
+    justify-content: space-between;
+    height: 100%;
+    margin-right: 3%;
+}
+
+.my_icons>i {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.my_icons>i:hover {
+    font-weight: 600;
+}
+
+#nav_icon.dark-mode {
+    color: white;
+}
+
+#sun {
+    display: none;
+}
+
+#weather-info {
+    display: inline-block;
+    position: absolute;
+    font-size: 14px;
+    margin-top: -15px;
+    color: green;
+    font-weight: 600;
+    margin-left: -5px;
+}
+
+#moon {
+    display: block;
+}
+
+#sun.dark-mode {
+    display: block;
+}
+
+#moon.dark-mode {
+    display: none;
+}
+
+#banner {
+    height: 530px;
+    margin-top: 7%;
+    margin-left: 1.5%;
+    width: 97%;
+}
+
+#banner-2 {
+    height: 212px;
+    margin-top: 1%;
+}
+
+#omg-deals {
+    margin-top: 1%;
+}
+
+#omg-deals div {
+    width: 98%;
+    margin: auto;
+}
+
+#omg-deals>div>img {
+    min-width: 125px;
+    margin-right: 18px;
+    height: 150px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+#budget-buys {
+    margin-top: 1%;
+}
+
+#budget-buys>div {
+    width: 100%;
+}
+
+#budget-buys>div>img {
+    width: 10.5%;
+    height: 170px;
+    margin-bottom: 15px;
+}
+
+#budget-buys>div>img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* #top-categories {
+    margin-top: 1%;
+} */
+
+#top-categories>div>img {
+    width: 218px;
+    height: 315px;
+    margin-left: 4px;
+    margin-bottom: 10px;
+}
+
+#top-brands {
+    margin-top: 3%;
+}
+
+#top-brands>div>img {
+    width: 170px;
+    height: 200px;
+    margin-left: 1.2%;
+    margin-bottom: 1%;
+}
+
+#shop-by-category {
+    margin-top: 1%;
+}
+
+#shop-by-category>div {
+    width: 90%;
+    margin: auto;
+}
+
+#shop-by-category>div>img {
+    width: 174px;
+    height: 250px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+}
+
+#my_footer {
+    margin-top: 3%;
+}
+
+#my_footer.dark-mode {
+    background-color: #121212 !important;
+    color: rgba(235, 217, 217, 0.966) !important;
+    transition: 0.5s;
+}
+
+
+#coupon {
+    height: 450px;
+    width: 350px;
+    position: absolute;
+    background-color: rgb(179, 12, 12);
+    margin-left: 38%;
+    margin-top: -550px;
+    z-index: 100;
+    display: none;
+    transition: 3s ease-out 0s 1 wait, 0.21s ease-out 3s ;
+}
+
+
+#coupon_close {
+    position: absolute;
+    border: none;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    float: right;
+    top: -16px;
+    cursor: pointer;
+    left: 96%;
+    color: #fe5663;
+    background: #360d0d;
+}
+
+
+/* //for small devices */
+@media (max-device-width: 480px) {
+
+    #logo {
+        height: 80px;
+        width: 100px;
+    }
+    #nav_bar {
+        height: 115px;
+    }
+
+    #banner {
+        height: 580px;
+        margin-top: 17%;
+        width: 100%;
+        margin-left: 0;
+    }
+}

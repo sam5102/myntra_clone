@@ -1,0 +1,111 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.contner {
+    display: flex;
+    flex-direction: row;
+}
+
+#filter {
+    width: 19%;
+    display: inline-block;
+    border-right: 1px solid black;
+    height: 100%;
+    position: fixed;
+    background: #f7f7f785;
+}
+
+#filter > h4 {
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 15px;
+    margin-left: 15px;
+    font-size: 18px;
+}
+
+#filter>h5 {
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 15px;
+    margin-left: 15px;
+    font-size: 15px;
+    color: #540808;
+    margin-bottom: 15px;
+}
+
+#filter>div {
+    margin-bottom: 5px;
+}
+
+#filter> div > input {
+    margin-left: 15px;
+    padding-right: 15px;
+    font-size: 12px;
+}
+
+#filter> div > span {
+    margin-left: 10px;
+    color: #5e333f;
+}
+
+#content {
+    width: 81%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-left: 19%;
+}
+
+.card {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#wishlist {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    background: azure;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0px;
+    margin-right: 10px;
+    top: 7px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+
+#wishlist > i:hover {
+    font-size: 18px;
+    color: rgba(62, 43, 108, 1);
+}
+
+#rating {
+    position: absolute;
+    width: 50px;
+    background: #dff2f3;
+    height: 20px;
+    bottom: 0px;
+    margin-left: 6;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-family: cursive;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#pagination {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

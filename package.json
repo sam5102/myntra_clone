@@ -1,0 +1,30 @@
+{
+  "name": "myntra_clone",
+  "version": "1.0.0",
+  "description": "for my first edureka project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./node/http.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sam5102/myntra_clone.git"
+  },
+  "keywords": [
+    "for",
+    "learning",
+    "purpose"
+  ],
+  "author": "sam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sam5102/myntra_clone/issues"
+  },
+  "homepage": "https://github.com/sam5102/myntra_clone#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "http": "0.0.1-security",
+    "os": "^0.1.2"
+  }
+}
