@@ -37,7 +37,10 @@ async function loadCoupon() {
 }
 
 function closeCoupon(){
-    document.getElementById('coupon').style.display = 'none';
+    document.getElementById('main').style.opacity = '0';
+    setTimeout(function(){ 
+        document.getElementById('coupon').style.display = 'none';
+    }, 500);
     document.getElementById('main').style.opacity = '1';
     document.body.style.overflow = 'scroll';
 }
