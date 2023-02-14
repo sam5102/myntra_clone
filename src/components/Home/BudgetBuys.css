@@ -1,0 +1,18 @@
+#budget-buys {
+    margin-top: 1%;
+}
+
+#budget-buys>div {
+    width: 100%;
+}
+
+#budget-buys>div>img {
+    width: 10.5%;
+    height: 170px;
+    margin-bottom: 15px;
+}
+
+#budget-buys>div>img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}

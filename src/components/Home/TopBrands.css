@@ -1,0 +1,10 @@
+#top-brands {
+    margin-top: 3%;
+}
+
+#top-brands>div>img {
+    width: 170px;
+    height: 200px;
+    margin-left: 1.2%;
+    margin-bottom: 1%;
+}

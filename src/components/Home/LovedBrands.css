@@ -1,0 +1,10 @@
+/* #top-categories {
+    margin-top: 1%;
+} */
+
+#top-categories>div>img {
+    width: 218px;
+    height: 315px;
+    margin-left: 4px;
+    margin-bottom: 10px;
+}

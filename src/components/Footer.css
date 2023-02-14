@@ -1,0 +1,9 @@
+#my_footer {
+    margin-top: 3%;
+}
+
+#my_footer.dark-mode {
+    background-color: #121212 !important;
+    color: rgba(235, 217, 217, 0.966) !important;
+    transition: 0.5s;
+}

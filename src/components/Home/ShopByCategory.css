@@ -1,0 +1,15 @@
+#shop-by-category {
+    margin-top: 1%;
+}
+
+#shop-by-category>div {
+    width: 90%;
+    margin: auto;
+}
+
+#shop-by-category>div>img {
+    width: 174px;
+    height: 250px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+}

@@ -1,0 +1,21 @@
+#banner-2 {
+    height: 212px;
+    margin-top: 1%;
+}
+
+#omg-deals {
+    margin-top: 1%;
+}
+
+#omg-deals div {
+    width: 98%;
+    margin: auto;
+}
+
+#omg-deals>div>img {
+    min-width: 125px;
+    margin-right: 18px;
+    height: 150px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}

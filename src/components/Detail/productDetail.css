@@ -1,0 +1,43 @@
+.image_section {
+    margin-left: 50px;
+    width: 40%;
+}
+
+.detail_section {
+    margin-left: 50px;
+    margin-top: 20px;
+    width: 55%;
+    margin-right: 5%;
+}
+
+.detail_section > h5 {
+    text-align: end;
+}
+
+.product_image {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+}
+
+.wishlist, .buy_now {
+    width: 160px;
+    font-size: 18px;
+    font-weight: 600;
+    height: 42px;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    margin-right: 30px;
+}
+
+.wishlist > i {
+    font-size: 21px;
+    color: navy;
+    margin-left: 5px;
+}
+
+.description {
+    margin-top: 25px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
