@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import './placeOrder.css'
 
+const placingOrder = "http://localhost:9500/placeOrder"
+const url = "http://localhost:9500/product_detail/"
+
 export default class placeOrder extends Component {
   constructor(props) {
     super(props)
@@ -17,8 +20,59 @@ export default class placeOrder extends Component {
     }
   }
 
-  handleChange = () => {
+  componentDidMount() {
+    let product = JSON.parse(sessionStorage.getItem('productName'))
+    console.log(product);
+    fetch(`${url}${product}`, {
+      method: "GET",
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data[0].price);
+      this.setState({order: data, cost: parseInt(data[0].price)})
+    })
+  }
 
+  handleChange = (event) => {
+    this.setState({[event.target.name]: event.target.value})
+  }
+
+  checkout=() => {
+    let obj = this.state
+    obj.order = sessionStorage.getItem("productName")
+    fetch(placingOrder, {
+      method: 'POST', 
+      headers: {
+        'accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(obj)
+    })
+    .then(this.props.history.push('/viewOrders'))
+  }
+
+  renderItem = (data) => {
+    if (data) {
+      return data.map((item) => {
+        return (
+            <div className="card mb-3" style={{maxWidth: 600, height: 180}} key={item.item_code}>
+            <div className="row g-0" style={{height: '100%'}}>
+              <div className="col-md-4" style={{height: '100%'}}>
+                <img src={item.thumbnail} style={{width: 165, height: '100%'}} className="img-fluid rounded-start" alt={item.product_name} />
+              </div>
+              <div className="col-md-8">
+                <div className="card-body">
+                  <h4 className="card-title">{item.brand}</h4>
+                  <h5 className="card-title">{item.product_name}</h5>
+                  <p className="card-text">Size: {item.size}</p>
+                  <p className="card-text">Price: {item.price}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      }) 
+    }
   }
 
   render() {
@@ -28,8 +82,9 @@ export default class placeOrder extends Component {
           <div className='panel panel-primary'>
             
             <div className="panel-heading">
-              <h3>Order for {this.state.product}</h3>
+              <h4>Order for {this.state.product}</h4>
             </div>
+            {this.renderItem(this.state.order)}
 
             <div className="panel-body">
               <input type="hidden" name="cost" value={this.state.cost} />
@@ -54,13 +109,13 @@ export default class placeOrder extends Component {
                   <input type="text" className="form-control" id='address' name='address' value={this.state.address} onChange={this.handleChange}/>
                 </div>
               </div>
-
+              
               <div className="row" style={{ marginTop: 15 }}>
                 <div className="col-md-12">
                   <h2>Total Price is Rs. {this.state.cost}</h2>
                 </div>
               </div>
-              <button className="btn btn-primary">PlaceOrder</button>
+              <button className="btn btn-primary" onClick={this.checkout} type="submit">PlaceOrder</button>
             </div>
           </div>
         </div>

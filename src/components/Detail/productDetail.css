@@ -8,6 +8,7 @@
     margin-top: 20px;
     width: 55%;
     margin-right: 5%;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
 }
 
 .detail_section > h5 {
@@ -21,7 +22,7 @@
 
 .wishlist, .buy_now {
     width: 160px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     height: 42px;
     letter-spacing: 1px;
@@ -30,14 +31,14 @@
 }
 
 .wishlist > i {
-    font-size: 21px;
+    font-size: 18px;
     color: navy;
     margin-left: 5px;
 }
 
 .description {
     margin-top: 25px;
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 600;
 }
 

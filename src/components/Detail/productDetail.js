@@ -19,7 +19,7 @@ export default class productDetail extends Component {
         let productName = this.props.match.params.productName
         console.log(productName);
         
-        sessionStorage.setItem("productName", productName)
+        sessionStorage.setItem("productName", JSON.stringify(productName))
         axios.get(`${url}${productName}`)
         .then((res) => {
             console.log(res.data, productName);
@@ -59,14 +59,14 @@ export default class productDetail extends Component {
             alt={this.state.productData.brand} height="500px"/>
         </div>
         <div className="detail_section">
-            <h5 style={{letterSpacing: 1, fontSize: 22}}><span class="badge bg-primary">{this.state.productData.category}</span></h5>
+            <h5 style={{letterSpacing: 1, fontSize: 17}}><span class="badge bg-primary">{this.state.productData.category}</span></h5>
             
-            <h1 style={{fontWeight: 600}}>{this.state.productData.brand}</h1>
-            <p style={{fontSize: 18, marginTop: 15, fontWeight: 500}}>
+            <h2 style={{fontWeight: 600}}>{this.state.productData.brand}</h2>
+            <p style={{fontSize: 16, marginTop: 15, fontWeight: 500}}>
                 {this.state.productData.product_name}
             </p>
             
-            <p style={{ fontSize: 18, fontWeight: 500 }}>
+            <p style={{ fontSize: 16, fontWeight: 500 }}>
                 Size: {this.state.productData.size}
             </p>
             <h2><span>&#8377;</span> {this.state.productData.price}.00</h2>
@@ -79,12 +79,12 @@ export default class productDetail extends Component {
             })}
 
             <br />
-            <button type="button" class="btn btn-warning wishlist">Add To WishList <i class="fas fa-heart"></i></button>
+            <button type="button" class="btn btn-warning wishlist">WishList <i class="fas fa-heart"></i></button>
             <button type="button" class="btn btn-success buy_now" onClick={this.buyNow}>Buy Now <i class="fas fa-shopping-cart"></i></button>
             <br />
             <p className='description'>Product Description:</p>
             {/* <p>{this.state.productData.details.description}</p> */}
-            <p style={{fontSize: 22}}>
+            <p style={{fontSize: 17}}>
                 boAt Stone 193 5W Portable Bluetooth Speaker (IPX7 Water Resistant, 4 Hours Playtime, Black)
             </p>
         </div>

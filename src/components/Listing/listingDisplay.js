@@ -11,14 +11,14 @@ const ListingDisplay = (props) => {
                     return (
                         <div class="card" style={{width: '18rem'}} key={item._id}>
                             <div style={{position: 'relative'}}>
-                                <img id="card_img" src={item.thumbnail} class="card-img-top" alt="model" height="380px" />
+                                <img id="card_img" src={item.thumbnail} class="card-img-top" alt="model" height="350px" />
                                 <div id="wishlist"><i class="fa-regular fa-heart"></i></div>
                                 <div id="rating"><span>{item.product_rating} <i class="fa-regular fa-star"></i></span></div>
                             </div>
                             <Link to={'/product/' + item.brand} key={item._id} style={{textDecoration: 'none'}}>
                                 <div class="card-body">
-                                    <h4 class="card-title" style={{fontWeight: 600, letterSpacing: 2}}>{item.brand}</h4>
-                                    <p class="card-text" style={{letterSpacing: 0.5, fontWeight: 500, fontSize: 17}}>{item.product_name}</p>
+                                    <h5 class="card-title" style={{fontWeight: 600, letterSpacing: 2}}>{item.brand}</h5>
+                                    <p class="card-text" style={{letterSpacing: 0.5, fontWeight: 500, fontSize: 16}}>{item.product_name}</p>
                                     <p class="card-text" style={{letterSpacing: 1}}>Rs. {item.price} <s>Rs {Number(item.price)+500}</s> <span style={{fontWeight: 600, letterSpacing: 1}}> ({Math.round((Number(item.price)/parseInt(Number(item.price) + 500))*100)}% OFF)</span></p>
                                 </div>
                             </Link>

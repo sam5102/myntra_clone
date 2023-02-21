@@ -9,6 +9,7 @@ import Listing from './Listing/listing'
 import couponImage from "../images/coupon/coupon.jpg"
 import productDetail from './Detail/productDetail';
 import placeOrder from './Orders/placeOrder';
+import viewOrders from './Orders/viewOrders';
 
 const Routing = () => {
 
@@ -33,6 +34,7 @@ const Routing = () => {
             <Route path="/listing/:category" component={Listing}/>
             <Route path="/product/:productName" component={productDetail}/>
             <Route path="/placeOrder/:orderName" component={placeOrder}/>
+            <Route path="/viewOrders" component={viewOrders}/>
             {/* <Footer /> */}
             {coupon()}
         </BrowserRouter>

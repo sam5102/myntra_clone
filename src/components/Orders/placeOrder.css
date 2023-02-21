@@ -1,3 +1,7 @@
+.container {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
 label {
     font-weight: 600;
     font-size: 18px;
