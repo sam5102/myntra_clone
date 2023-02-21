@@ -3,7 +3,9 @@ import './Header.css';
 import myntraLogo from '../images/myntra-logo.png'
 import { Link } from 'react-router-dom';
 
-const categoryUrl = "http://localhost:9500/categories"
+const categoryUrl = "https://myntra-clone.onrender.com/categories"
+//http://localhost:9500/categories
+
 
 class Header extends Component {
     constructor(props) {

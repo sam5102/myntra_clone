@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ListingDisplay from './listingDisplay';
 
-const url = "http://localhost:9500/products?categoryId=";
+const url = "https://myntra-clone.onrender.com/products?categoryId="
+//http://localhost:9500/products?categoryId=
 
 const Listing = ({ match }) => {
   const [itemList, setItemList] = useState([]);

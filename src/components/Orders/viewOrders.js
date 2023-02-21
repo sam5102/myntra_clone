@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import DisplayOrder from './DisplayOrder'
 
-const orderApi = "http://localhost:9500/viewOrder"
+const orderApi = "https://myntra-clone.onrender.com/viewOrder"
+//http://localhost:9500/viewOrder
 
 class viewOrders extends Component {
     constructor(props) {

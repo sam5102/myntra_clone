@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import './placeOrder.css'
 
-const placingOrder = "http://localhost:9500/placeOrder"
-const url = "http://localhost:9500/product_detail/"
+const placingOrder = "https://myntra-clone.onrender.com/placeOrder"
+//http://localhost:9500/placeOrder
+
+const url = "https://myntra-clone.onrender.com/product_detail/"
+//http://localhost:9500/product_detail/
 
 export default class placeOrder extends Component {
   constructor(props) {

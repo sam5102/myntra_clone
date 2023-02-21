@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import './productDetail.css'
 
-const url = "http://localhost:9500/product_detail/"
+const url = "https://myntra-clone.onrender.com/product_detail/"
+//http://localhost:9500/product_detail/
 
 export default class productDetail extends Component {
 
