@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './Header.css';
 import myntraLogo from '../images/myntra-logo.png'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 
 const categoryUrl = "https://myntra-clone.onrender.com/categories"
 //http://localhost:9500/categories
@@ -12,7 +14,8 @@ class Header extends Component {
         super(props);
         this.state = {
             temperature: 0,
-            navData: []
+            navData: [],
+            totalOrders: 0
         }
     }
 
@@ -23,7 +26,15 @@ class Header extends Component {
             console.log(data);
             this.setState({navData: data})
         })
+        this.totalOrders()
         this.checkLocation()
+    }
+
+    totalOrders = () => {
+        axios.get("https://myntra-clone.onrender.com/viewOrder").then((res) => {
+            console.log(res.data);
+            this.setState({totalOrders: res.data.length})
+        })
     }
 
     // geo location
@@ -120,13 +131,26 @@ class Header extends Component {
                             <input className="form-control me-2" type="search" placeholder="Search for products, brands and more" aria-label="Search" style={{letterSpacing: 1}}></input>
                         </form>
                         <div className="d-flex my_icons">
-                            <i className="fa-regular fa-user" id="nav_icon"></i>
-                            <i className="fa-regular fa-heart" id="nav_icon"></i>
-                            <i className="fa-sharp fa-solid fa-bag-shopping" id="nav_icon"></i>
-                            <div data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on bottom">
-                                <i className="fa-solid fa-cloud" id="nav_icon" style={{marginTop: 3}}></i>
-                                <p id="weather-info">{this.state.temperature}&#8451;</p>
-                            </div>
+                        <Link className="navbar-brand" to="/wishlist" style={{marginRight: 12, color: 'black'}}>
+                            <i className="fa-regular fa-user" id="nav_icon" style={{fontSize: 20}}></i>
+                        </Link>
+                            
+                        <Link className="navbar-brand" to="/wishlist" style={{marginRight: 12, color: 'black'}}>
+                            <i className="fa-regular fa-heart" id="nav_icon" style={{fontSize: 20}}></i>
+                        </Link>
+                        <Link className="navbar-brand" to="/viewOrders" style={{marginRight: 12, color: 'black'}}>
+                            <i className="fa-sharp fa-solid fa-bag-shopping" id="nav_icon" style={{position: 'relative', fontSize: 20}}>
+                            <span className="position-absolute start-100 translate-middle badge rounded-pill bg-danger" style={{top: '-3px', fontSize: 11}}>
+                                {this.state.totalOrders}
+                            </span>
+                            </i>
+                        </Link>
+                            <Link className="navbar-brand" to="/" style={{marginRight: 12, color: 'black'}}>
+                                <div data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on bottom" style={{marginTop: 2}}>
+                                    <i className="fa-solid fa-cloud" id="nav_icon" style={{marginTop: 5, fontSize: 20}}></i>
+                                    <p id="weather-info">{this.state.temperature}&#8451;</p>
+                                </div>
+                            </Link>
                         </div>
                     </div>
                 </div>

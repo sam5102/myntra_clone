@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './listing.css'
 
+import loader from '../../images/giphy.gif'
+
 const ListingDisplay = (props) => {
 
     const renderData = ({listData}) => {
@@ -27,7 +29,7 @@ const ListingDisplay = (props) => {
                 })
             } else {
                 return (
-                    <h2>No data found as per filter</h2>
+                    <img src={loader} alt="loading..." style={{height: 220, marginTop: 130}}/>
                 )
             }
         } else {

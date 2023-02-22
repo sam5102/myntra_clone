@@ -3,6 +3,7 @@ import axios from 'axios';
 import './productDetail.css'
 
 const url = "https://myntra-clone.onrender.com/product_detail/"
+const wishlist = "https://myntra-clone.onrender.com/addToWishlist"
 //http://localhost:9500/product_detail/
 
 export default class productDetail extends Component {
@@ -50,6 +51,25 @@ export default class productDetail extends Component {
         sessionStorage.setItem("product", this.state.productData.brand)
         this.props.history.push(`/placeOrder/${this.state.productData.brand}`)
     }
+
+    addToWishlist = () => {
+        let obj = { 
+            id: Math.floor(Math.random() *10000),
+            product: this.props.match.params.productName,
+            name: "Himanshu",
+            email: 'himanshu@gmail.com',
+        }
+
+        fetch(wishlist, {
+        method: 'POST', 
+        headers: {
+            'accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(obj)
+        })
+        .then(this.props.history.push(`/wishlist/${obj.email}`))
+    }
     
 
   render() {
@@ -80,7 +100,7 @@ export default class productDetail extends Component {
             })}
 
             <br />
-            <button type="button" class="btn btn-warning wishlist">WishList <i class="fas fa-heart"></i></button>
+            <button type="button" class="btn btn-warning wishlist" onClick={this.addToWishlist}>WishList <i class="fas fa-heart"></i></button>
             <button type="button" class="btn btn-success buy_now" onClick={this.buyNow}>Buy Now <i class="fas fa-shopping-cart"></i></button>
             <br />
             <p className='description'>Product Description:</p>
