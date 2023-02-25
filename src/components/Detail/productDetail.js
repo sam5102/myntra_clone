@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import './productDetail.css'
 
+import loader from '../../images/giphy.gif'
+
 const url = "https://myntra-clone.onrender.com/product_detail/"
 const wishlist = "https://myntra-clone.onrender.com/addToWishlist"
 //http://localhost:9500/product_detail/
@@ -33,18 +35,22 @@ export default class productDetail extends Component {
 
     productRating = (data) => {
         const totalRating = 5
+        let stars = []
         if (data) {
              for (let i = 0; i < parseInt(data); i++) {
-                 this.state.dom_content.push(<i class="fas fa-star" key={i}></i>)
+                 stars.push(<i class="fas fa-star" key={i}></i>)
             }
 
             for (let j = 0; j < totalRating - parseInt(data); j++) {
                 console.log(j);
                 return (
-                    this.state.dom_content.push(<i class="far fa-star" key={j}></i>)
+                    stars.push(<i class="far fa-star" key={parseInt(data) + j}></i>)
                 )
             }
         }
+
+        this.state.dom_content.push(stars)
+        return stars;
     }
 
     buyNow = () => {
@@ -73,12 +79,15 @@ export default class productDetail extends Component {
     
 
   render() {
+    
     return (
+       
       <div style={{marginTop: 120, display: 'flex'}}>
         <div className="image_section">
             <img className='product_image' src={this.state.productData.thumbnail} 
             alt={this.state.productData.brand} height="500px"/>
         </div>
+        {this.state.productData ? 
         <div className="detail_section">
             <h5 style={{letterSpacing: 1, fontSize: 17}}><span class="badge bg-primary">{this.state.productData.category}</span></h5>
             
@@ -98,7 +107,6 @@ export default class productDetail extends Component {
                     item
                 )
             })}
-
             <br />
             <button type="button" class="btn btn-warning wishlist" onClick={this.addToWishlist}>WishList <i class="fas fa-heart"></i></button>
             <button type="button" class="btn btn-success buy_now" onClick={this.buyNow}>Buy Now <i class="fas fa-shopping-cart"></i></button>
@@ -106,10 +114,18 @@ export default class productDetail extends Component {
             <p className='description'>Product Description:</p>
             {/* <p>{this.state.productData.details.description}</p> */}
             <p style={{fontSize: 17}}>
-                boAt Stone 193 5W Portable Bluetooth Speaker (IPX7 Water Resistant, 4 Hours Playtime, Black)
+                {this.state.productData.details.description}
             </p>
+            
+            <div>
+                <img src="https://www.linkpicture.com/q/360_F_216482277_gPKPcj9vdGlGi05LYCrtsWphZssLsIUO.jpg" alt="verified" height="90px" style={{display: 'inline-block'}}/>
+                <p style={{display: 'inline-block', marginLeft: 20}}>{this.state.productData.details.verify}</p>
+            </div>
         </div>
+        : <img src={loader} alt="loading..." style={{height: 220, marginTop: 130}}/>
+            }
       </div>
+        
     )
   }
 }

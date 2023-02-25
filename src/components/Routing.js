@@ -11,6 +11,8 @@ import productDetail from './Detail/productDetail';
 import placeOrder from './Orders/placeOrder';
 import viewOrders from './Orders/viewOrders';
 import wishlist from './wishlist/wishlist';
+import Register from './login/register';
+import Login from './login/login';
 
 const Routing = () => {
 
@@ -37,6 +39,8 @@ const Routing = () => {
             <Route path="/placeOrder/:orderName" component={placeOrder}/>
             <Route path="/viewOrders" component={viewOrders}/>
             <Route path="/wishlist/:emailId" component={wishlist}/>
+            <Route path="/login" component={Login}/>
+            <Route path="/Register" component={Register}/>
             {/* <Footer /> */}
             {coupon()}
         </BrowserRouter>
