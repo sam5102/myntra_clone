@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
+import Header from '../Header';
 
-const url = "http://3.17.216.66:5000/api/auth/register"
+const url = "http://3.17.216.66:5000/api/auth/login"
 
 export default class Login extends Component {
   constructor(props) {
@@ -9,7 +11,7 @@ export default class Login extends Component {
     this.state = {
       email: 'himanshu@gmail.com',
       password: '123456678',
-    
+      message: ""
     }
   }
 
@@ -18,7 +20,7 @@ export default class Login extends Component {
     this.setState({[event.target.name]: event.target.value})
   }
 
-  checkout=() => {
+  handleSubmit=() => {
     fetch(url, {
       method: 'POST', 
       headers: {
@@ -27,19 +29,28 @@ export default class Login extends Component {
       },
       body: JSON.stringify(this.state)
     })
-    .then(this.props.history.push('/'))
+    .then((res) => res.json())
+    .then((data) => {
+        if (data.auth === false) {
+            this.setState({message: data.token})
+        } else {
+            sessionStorage.setItem('access_token', data.token)
+            this.props.history.push('/')
+        }
+    })
   }
-
 
 
   render() {
     return (
       <>
+        <Header />
         <div className="container" style={{marginTop: 110}}>
           <div className='panel panel-primary'>
             
             <div className="panel-heading">
               <h4>Login</h4>
+              {this.state.message}
             </div>
 
             <div className="panel-body">
@@ -56,8 +67,14 @@ export default class Login extends Component {
                 </div>
               </div>
               
+              <div style={{display: 'flex', alignItems: 'center', marginTop: 20}}>
+                <button className="btn btn-primary" onClick={this.handleSubmit} type="submit" 
+                style={{marginRight: 20}}>Login</button>
+                <Link className="navbar-brand" to="/register" style={{marginRight: 12, color: 'black'}}>
+                  <button className="btn btn-success">Register</button>
+                </Link>
+              </div>
               
-              <button className="btn btn-primary" onClick={this.checkout} type="submit">Login</button>
             </div>
           </div>
         </div>

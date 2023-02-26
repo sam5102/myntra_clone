@@ -32,7 +32,7 @@ const Routing = () => {
 
     return (
         <BrowserRouter>
-            <Header />
+            {/* <Header /> */}
             <Route exact path="/" component={Home}/>
             <Route path="/listing/:category" component={Listing}/>
             <Route path="/product/:productName" component={productDetail}/>

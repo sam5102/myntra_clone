@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
+import Header from '../Header'
 
-const url = "http://3.17.216.66:5000/api/auth/login"
+const url = "http://3.17.216.66:5000/api/auth/register"
 
 export default class Register extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      name: "Himanshu",
-      email: 'himanshu@gmail.com',
-      password: '123456678',
-      phone: 123456789,
+      name: "Please Enter Name",
+      email: 'Email@example.com',
+      password: '',
+      phone: 123455
     }
   }
 
@@ -27,15 +28,18 @@ export default class Register extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(this.state)
+    }).then((res) => {
+      console.log(res.json());
     })
-    .then(this.props.history.push('/'))
+    .then(() => alert("Successfully Registered! Please Login to continue"))
+    .then(this.props.history.push('/login'))
   }
-
 
 
   render() {
     return (
       <>
+        <Header />
         <div className="container" style={{marginTop: 110}}>
           <div className='panel panel-primary'>
             
@@ -65,7 +69,8 @@ export default class Register extends Component {
               </div>
               
               
-              <button className="btn btn-primary" onClick={this.checkout} type="submit">Register</button>
+              <button className="btn btn-primary" onClick={this.checkout} type="submit" 
+              style={{marginTop: 20}}>Register</button>
             </div>
           </div>
         </div>

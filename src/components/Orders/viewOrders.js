@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import DisplayOrder from './DisplayOrder'
+import Header from '../Header'
 
 const orderApi = "https://myntra-clone.onrender.com/viewOrder"
 //http://localhost:9500/viewOrder
@@ -16,6 +17,7 @@ class viewOrders extends Component {
     render() {
         return (
             <>
+                <Header />
                 <DisplayOrder orderData={this.state.orders}/>
             </>
           )

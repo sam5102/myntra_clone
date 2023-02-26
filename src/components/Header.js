@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import './Header.css';
 import myntraLogo from '../images/myntra-logo.png'
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
-
 const categoryUrl = "https://myntra-clone.onrender.com/categories"
-//http://localhost:9500/categories
-
+const url = "http://3.17.216.66:5000/api/auth/userinfo"
 
 class Header extends Component {
     constructor(props) {
@@ -15,26 +13,86 @@ class Header extends Component {
         this.state = {
             temperature: 0,
             navData: [],
-            totalOrders: 0
+            totalOrders: 0,
+            userData: '',
+            show: true
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         fetch(`${categoryUrl}`, {method: 'GET'})
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
             this.setState({navData: data})
         })
+        this.getUserInfo()
         this.totalOrders()
         this.checkLocation()
     }
 
+    getUserInfo = () => {
+        fetch(url, {
+            method: 'GET',
+            headers:{
+                'x-access-token':sessionStorage.getItem('access_token'),
+            }
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            sessionStorage.setItem("user_info", JSON.stringify(data))
+            this.setState({userData: data})
+        })
+    }
+
+    handleLogout = () => {
+        sessionStorage.removeItem('access_token');
+        this.setState({userData:''})
+        this.props.history.push('/')
+    }
+
     totalOrders = () => {
         axios.get("https://myntra-clone.onrender.com/viewOrder").then((res) => {
-            console.log(res.data);
             this.setState({totalOrders: res.data.length})
         })
+    }
+
+    conditionalHeader = () => {
+        if (this.state.userData.name) {
+            let data = this.state.userData;
+            sessionStorage.setItem("user_info", JSON.stringify(data))
+            return (
+                <>
+                    <i className="fa-solid fa-right-from-bracket" id="nav_icon" style={{fontSize: 20, marginTop: 10}} 
+                    onClick={this.handleLogout}></i>
+
+                    <div className="modal" tabIndex="-1" role="dialog" 
+                    style={{display: this.state.show ? "block": "none"}}>
+                        <div className="modal-dialog" role="document">
+                            <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">Welcome {this.state.userData.name}!</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => this.setState({show: !this.state.show})}>
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => this.setState({show: !this.state.show})}>Close</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </>
+               
+            )
+        } else {
+            return (
+                <Link className="navbar-brand" to="/login" style={{marginRight: 12, color: 'black'}}>
+                    <i className="fa-regular fa-user" id="nav_icon" style={{fontSize: 20}}></i>
+                </Link>
+            )
+        }
     }
 
     // geo location
@@ -130,9 +188,7 @@ class Header extends Component {
                             <input className="form-control me-2" type="search" placeholder="Search for products, brands and more" aria-label="Search" style={{letterSpacing: 1}}></input>
                         </form>
                         <div className="d-flex my_icons">
-                        <Link className="navbar-brand" to="/wishlist" style={{marginRight: 12, color: 'black'}}>
-                            <i className="fa-regular fa-user" id="nav_icon" style={{fontSize: 20}}></i>
-                        </Link>
+                        {this.conditionalHeader()}
                             
                         <Link className="navbar-brand" to="/wishlist" style={{marginRight: 12, color: 'black'}}>
                             <i className="fa-regular fa-heart" id="nav_icon" style={{fontSize: 20}}></i>
@@ -158,4 +214,6 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default withRouter(Header);
+
+//http://localhost:9500/categories

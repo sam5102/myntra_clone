@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import './wishlist.css'
 import WishlistDisplay from './wishlistDisplay'
+import Header from '../Header';
 
 const wishlistProduct = "https://myntra-clone.onrender.com/myWishList/himanshu@gmail.com"
 
@@ -28,7 +29,11 @@ export default class wishlist extends Component {
 
   render() {
      return (
-        <WishlistDisplay wishlist={this.state.wishlistData}/>
+        <>
+            <Header />
+            <WishlistDisplay wishlist={this.state.wishlistData}/>
+        </>
+        
      )
   }
 }

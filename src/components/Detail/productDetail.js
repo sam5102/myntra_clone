@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import Header from '../Header';
 import './productDetail.css'
 
 import loader from '../../images/giphy.gif'
@@ -15,7 +16,9 @@ export default class productDetail extends Component {
 
         this.state = {
             productData: "",
-            dom_content: []
+            dom_content: [],
+            username: "",
+            user_email: ""
         }
     }
 
@@ -30,7 +33,16 @@ export default class productDetail extends Component {
             this.setState({productData: res.data[0]})
             this.productRating(res.data[0].product_rating)
         })
-              
+        this.gettingUserInfo()
+    }
+
+    gettingUserInfo = () => {
+        if (sessionStorage.getItem('access_token') == null) {
+            return null;
+        } else {
+            let user_info = JSON.parse(sessionStorage.getItem('userInfo'))
+            this.setState({username: user_info.name, user_email: user_info.email})
+        }
     }
 
     productRating = (data) => {
@@ -54,34 +66,45 @@ export default class productDetail extends Component {
     }
 
     buyNow = () => {
-        sessionStorage.setItem("product", this.state.productData.brand)
-        this.props.history.push(`/placeOrder/${this.state.productData.brand}`)
+        if (sessionStorage.getItem('access_token') == null) {
+            alert("Please login to place order")
+            this.props.history.push('/login')
+        } else {
+            sessionStorage.setItem("product", this.state.productData.brand)
+            this.props.history.push(`/placeOrder/${this.state.productData.brand}`)
+        }
     }
 
     addToWishlist = () => {
-        let obj = { 
-            id: Math.floor(Math.random() *10000),
-            product: this.props.match.params.productName,
-            name: "Himanshu",
-            email: 'himanshu@gmail.com',
+        if (sessionStorage.getItem('access_token') == null) {
+            alert("Please login to add in wishlist")
+            this.props.history.push('/login')
+        } else {
+            let obj = { 
+                id: Math.floor(Math.random() *10000),
+                product: this.props.match.params.productName,
+                name: this.state.username,
+                email: this.state.user_email,
+            }
+    
+            fetch(wishlist, {
+            method: 'POST', 
+            headers: {
+                'accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(obj)
+            })
+            .then(this.props.history.push(`/wishlist/${obj.email}`))
         }
-
-        fetch(wishlist, {
-        method: 'POST', 
-        headers: {
-            'accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(obj)
-        })
-        .then(this.props.history.push(`/wishlist/${obj.email}`))
     }
     
 
   render() {
     
     return (
-       
+        <>
+       <Header />
       <div style={{marginTop: 120, display: 'flex'}}>
         <div className="image_section">
             <img className='product_image' src={this.state.productData.thumbnail} 
@@ -125,7 +148,7 @@ export default class productDetail extends Component {
         : <img src={loader} alt="loading..." style={{height: 220, marginTop: 130}}/>
             }
       </div>
-        
+        </>
     )
   }
 }

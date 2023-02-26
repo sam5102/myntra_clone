@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Header from '../Header'
 import './placeOrder.css'
 
 const placingOrder = "https://myntra-clone.onrender.com/placeOrder"
@@ -10,14 +11,14 @@ const url = "https://myntra-clone.onrender.com/product_detail/"
 export default class placeOrder extends Component {
   constructor(props) {
     super(props)
-
+    let userData = JSON.parse(sessionStorage.getItem('userInfo'))
     this.state = {
       id: Math.floor(Math.random() *10000),
       product: this.props.match.params.orderName,
-      name: "Himanshu",
-      email: 'himanshu@gmail.com',
+      name: userData ? userData.name : "",
+      email: userData ? userData.email : '',
       cost: 0,
-      phone: 123456789,
+      phone: userData ? userData.phone : '',
       address: "mera address",
       order: ""
     }
@@ -79,8 +80,17 @@ export default class placeOrder extends Component {
   }
 
   render() {
+    if (sessionStorage.getItem('access_token') == null) {
+      return (
+        <>
+          <Header />
+
+        </>
+      )
+    }
     return (
       <>
+      <Header />
         <div className="container" style={{marginTop: 110}}>
           <div className='panel panel-primary'>
             

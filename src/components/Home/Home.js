@@ -1,5 +1,6 @@
 import React from 'react';
 import './Home.css';
+import Header from '../Header'
 import Banner from './Banner'
 import OmgDeals from './OmgDeals';
 import BudgetBuys from './BudgetBuys';
@@ -11,6 +12,7 @@ import Footer from '../Footer';
 const Home = () => {
     return (
         <div>
+            <Header />
             <Banner />
             <OmgDeals />
             <BudgetBuys />
