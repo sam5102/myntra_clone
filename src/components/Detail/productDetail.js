@@ -40,28 +40,32 @@ export default class productDetail extends Component {
         if (sessionStorage.getItem('access_token') == null) {
             return null;
         } else {
-            let user_info = JSON.parse(sessionStorage.getItem('userInfo'))
+            let user_info = JSON.parse(sessionStorage.getItem('user_info'))
             this.setState({username: user_info.name, user_email: user_info.email})
         }
     }
 
     productRating = (data) => {
-        const totalRating = 5
-        let stars = []
-        if (data) {
-             for (let i = 0; i < parseInt(data); i++) {
-                 stars.push(<i class="fas fa-star" key={i}></i>)
-            }
+        const totalRating = 5;
+        const rating = parseFloat(data);
+        const fullStars = Math.floor(rating);
+        const halfStars = Math.ceil(rating - fullStars);
+        const emptyStars = totalRating - fullStars - halfStars;
 
-            for (let j = 0; j < totalRating - parseInt(data); j++) {
-                console.log(j);
-                return (
-                    stars.push(<i class="far fa-star" key={parseInt(data) + j}></i>)
-                )
-            }
+        let stars = [];
+
+        for (let i = 0; i < fullStars; i++) {
+            stars.push(<i className="fas fa-star" key={`full-${i}`}></i>);
         }
 
-        this.state.dom_content.push(stars)
+        if (halfStars > 0) {
+            stars.push(<i className="fas fa-star-half-alt" key="half"></i>);
+        }
+
+        for (let j = 0; j < emptyStars; j++) {
+            stars.push(<i className="far fa-star" key={`empty-${j}`}></i>);
+        }
+
         return stars;
     }
 
@@ -125,13 +129,9 @@ export default class productDetail extends Component {
             <h2><span>&#8377;</span> {this.state.productData.price}.00</h2>
 
             {console.log(this.state.dom_content)}
-            {this.state.dom_content.map((item) => {
-                return (
-                    item
-                )
-            })}
+            {this.productRating(this.state.productData.product_rating)} <span>({this.state.productData.product_rating})</span>
             <br />
-            <button type="button" class="btn btn-warning wishlist" onClick={this.addToWishlist}>WishList <i class="fas fa-heart"></i></button>
+            <button type="button" class="btn btn-warning wishlist" onClick={this.addToWishlist}>WishList <i class="fas fa-heart" style={{color: 'black'}}></i></button>
             <button type="button" class="btn btn-success buy_now" onClick={this.buyNow}>Buy Now <i class="fas fa-shopping-cart"></i></button>
             <br />
             <p className='description'>Product Description:</p>
@@ -145,7 +145,7 @@ export default class productDetail extends Component {
                 <p style={{display: 'inline-block', marginLeft: 20}}>{this.state.productData.details.verify}</p>
             </div>
         </div>
-        : <img src={loader} alt="loading..." style={{height: 220, marginTop: 130}}/>
+        : <img src={loader} alt="loading..." style={{height: 220, marginTop: 120, marginLeft: '40%'}}/>
             }
       </div>
         </>

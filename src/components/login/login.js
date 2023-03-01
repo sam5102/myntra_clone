@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+
+//import "antd/dist/antd.css";
+import { notification } from 'antd';
 import Header from '../Header';
 
 const url = "http://3.17.216.66:5000/api/auth/login"
@@ -36,6 +39,11 @@ export default class Login extends Component {
         } else {
             sessionStorage.setItem('access_token', data.token)
             this.props.history.push('/')
+
+            notification.open({
+              message: 'Successfully Login',
+              placement: "bottomLeft"
+            });
         }
     })
   }

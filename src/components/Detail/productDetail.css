@@ -1,10 +1,11 @@
 .image_section {
     margin-left: 50px;
     width: 40%;
+    position: fixed;
 }
 
 .detail_section {
-    margin-left: 50px;
+    margin-left: 40%;
     margin-top: 15px;
     width: 55%;
     margin-right: 5%;

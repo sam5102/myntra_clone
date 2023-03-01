@@ -3,6 +3,7 @@ import './Header.css';
 import myntraLogo from '../images/myntra-logo.png'
 import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
+import { Badge, notification } from 'antd';
 
 const categoryUrl = "https://myntra-clone.onrender.com/categories"
 const url = "http://3.17.216.66:5000/api/auth/userinfo"
@@ -15,7 +16,8 @@ class Header extends Component {
             navData: [],
             totalOrders: 0,
             userData: '',
-            show: true
+            products: [],
+            searchText: ''
         }
     }
 
@@ -29,6 +31,7 @@ class Header extends Component {
         this.getUserInfo()
         this.totalOrders()
         this.checkLocation()
+        this.fetchProductName()
     }
 
     getUserInfo = () => {
@@ -49,6 +52,10 @@ class Header extends Component {
     handleLogout = () => {
         sessionStorage.removeItem('access_token');
         this.setState({userData:''})
+        notification.open({
+            message: 'Successfully Logout',
+            placement: "bottomLeft"
+          });
         this.props.history.push('/')
     }
 
@@ -58,31 +65,34 @@ class Header extends Component {
         })
     }
 
+    fetchProductName = () => {
+        axios.get("https://myntra-clone.onrender.com/products").then((res) => {
+            res.data.forEach(element => {
+                const data = {brand: element.brand, name: element.product_name}
+                this.state.products.push(data)
+            });
+            console.log(res.data);
+        })
+    }
+
+    goToWishlist = () => {
+        if (this.state.userData.name) {
+            this.props.history.push('/wishlist/' + this.state.userData.email)
+        } else {
+            alert("Please login to check wishlist")
+        }
+    }
+
     conditionalHeader = () => {
         if (this.state.userData.name) {
+            console.log();
             let data = this.state.userData;
             sessionStorage.setItem("user_info", JSON.stringify(data))
             return (
                 <>
                     <i className="fa-solid fa-right-from-bracket" id="nav_icon" style={{fontSize: 20, marginTop: 10}} 
                     onClick={this.handleLogout}></i>
-
-                    <div className="modal" tabIndex="-1" role="dialog" 
-                    style={{display: this.state.show ? "block": "none"}}>
-                        <div className="modal-dialog" role="document">
-                            <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title">Welcome {this.state.userData.name}!</h5>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => this.setState({show: !this.state.show})}>
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => this.setState({show: !this.state.show})}>Close</button>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </>
                
             )
@@ -139,10 +149,42 @@ class Header extends Component {
                 return (
                     <li className="nav-item">
                         <Link to={`/listing/${item.category}`} key={item.id} style={{textDecoration: 'none'}}>{item.category}</Link>
-                        {/* <a className="nav-link active" aria-current="page" target="_blank" href="./pages/mens.html" id="a_tag">MEN</a> */}
                     </li>
                 )
             })
+        }
+    }
+
+
+    handleChange = (event) => {
+        let append = event.target.value
+        this.setState({searchText: event.target.value})
+        this.renderSuggestions(this.state.products, event.target.value)
+        console.log(event.target.value);
+    }
+
+    renderSuggestions = (data, query) => {
+        if (data.length > 0) {
+            if (query) {
+                console.log(query);
+                 data.filter(entry => entry.name.includes(query)).map((item) => {
+                    console.log(item);
+                    return (
+                        <span style={{display: 'block'}}>
+                            {item.name}
+                        </span>
+                    )
+                })
+                
+            } else {
+                return data.map((item) => {
+                    return (
+                        <span style={{display: 'block'}}>
+                            {item.name}
+                        </span>
+                    )
+                })
+            }
         }
     }
 
@@ -160,45 +202,31 @@ class Header extends Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent" style={{marginTop: 5}}>
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0 my_links">
-                            {/* <li className="nav-item">
-                                <Link to="/" style={{textDecoration: 'none'}}>{this.state.navData[0]}</Link>
-                                {/* <a className="nav-link active" aria-current="page" target="_blank" href="./pages/mens.html" id="a_tag">MEN</a> 
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#" id="a_tag">WOMEN</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#" id="a_tag">KIDS</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#" id="a_tag">HOME & LIVING</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#" id="a_tag">BEAUTY</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#" id="a_tag">STUDIO</a>
-                            </li> */}
+                            
                             {this.navLinks()}
                         </ul>
                         <form role="search" className="my_input">
                             <i className="fa-solid fa-magnifying-glass" id="search_icon"></i>
                             <i className="fa-solid fa-moon moon" id="moon" onclick="toggleTheme()"></i>
                             <i className="fa-solid fa-sun sun" id="sun" onclick="toggleTheme()"></i>
-                            <input className="form-control me-2" type="search" placeholder="Search for products, brands and more" aria-label="Search" style={{letterSpacing: 1}}></input>
+                            <input className="form-control me-2" type="search" value={this.state.searchText} placeholder="Search for products, brands and more" onChange={this.handleChange} aria-label="Search" style={{letterSpacing: 1}}></input>
+                            {/* <div>
+                                {this.renderSuggestions(this.state.products)}
+                            </div> */}
+                            
                         </form>
                         <div className="d-flex my_icons">
                         {this.conditionalHeader()}
                             
-                        <Link className="navbar-brand" to="/wishlist" style={{marginRight: 12, color: 'black'}}>
-                            <i className="fa-regular fa-heart" id="nav_icon" style={{fontSize: 20}}></i>
-                        </Link>
+                        <i className="fa-regular fa-heart" id="nav_icon" style={{fontSize: 20, marginTop:10}} 
+                        onClick={this.goToWishlist}></i>
+                        
                         <Link className="navbar-brand" to="/viewOrders" style={{marginRight: 12, color: 'black'}}>
+                        <Badge count={this.state.totalOrders}>
                             <i className="fa-sharp fa-solid fa-bag-shopping" id="nav_icon" style={{position: 'relative', fontSize: 20}}>
-                            <span className="position-absolute start-100 translate-middle badge rounded-pill bg-danger" style={{top: '-3px', fontSize: 11}}>
-                                {this.state.totalOrders}
-                            </span>
                             </i>
+                        </Badge>
+                            
                         </Link>
                             <Link className="navbar-brand" to="/" style={{marginRight: 12, color: 'black'}}>
                                 <div data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on bottom" style={{marginTop: 2}}>

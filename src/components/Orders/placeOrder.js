@@ -80,14 +80,7 @@ export default class placeOrder extends Component {
   }
 
   render() {
-    if (sessionStorage.getItem('access_token') == null) {
-      return (
-        <>
-          <Header />
-
-        </>
-      )
-    }
+    
     return (
       <>
       <Header />

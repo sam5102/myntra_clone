@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import loader from '../../images/giphy.gif'
+
 const WishlistDisplay = (props) => {
 
-    const renderData = ({wishlist}) => {
-        if (wishlist) {
+    const renderData = ({wishlist}) => {        
             if (wishlist.length > 0) {
                 return wishlist.map((item) => {
                     return (
@@ -25,12 +26,10 @@ const WishlistDisplay = (props) => {
                     )
                 })
             } else {
-                <h3>Loading Data......</h3>
+                <img src={loader} alt="loading..." style={{height: 220, marginTop: 120, marginLeft: '40%'}}/>
             }
-        } else {
-            <h2>No data found</h2>
-        }
     }
+
   return (
     <div style={{display: 'flex', marginTop: 100}}>
         {renderData(props)} 

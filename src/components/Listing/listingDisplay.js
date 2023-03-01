@@ -1,27 +1,63 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useHistory } from "react-router";
+import { notification } from 'antd';
 import './listing.css'
 
 import loader from '../../images/giphy.gif'
 
+const wishlist = "https://myntra-clone.onrender.com/addToWishlist"
 const ListingDisplay = (props) => {
+    const history = useHistory()
+
+    const addToWishlist = (productName) => {
+        if (sessionStorage.getItem('access_token') == null) {
+            alert("Please login to add in wishlist")
+            history.push('/login')
+        } else {
+            let user_info = JSON.parse(sessionStorage.getItem('user_info'))
+            let obj = { 
+                id: Math.floor(Math.random() *10000),
+                product: productName,
+                name: user_info.name,
+                email: user_info.email,
+            }
+    
+            fetch(wishlist, {
+            method: 'POST', 
+            headers: {
+                'accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(obj)
+            })
+            .then(() => {
+                notification.open({
+                    message: productName + 'added to your wishlist',
+                    placement: "bottomLeft"
+                  });
+            })
+        }
+    }
 
     const renderData = ({listData}) => {
         if (listData) {
             if (listData.length > 0) {
                 return listData.map((item) => {
                     return (
-                        <div class="card" style={{width: '18rem'}} key={item._id}>
+                        <div className="card" style={{width: '18rem'}} key={item._id}>
                             <div style={{position: 'relative'}}>
-                                <img id="card_img" src={item.thumbnail} class="card-img-top" alt="model" height="350px" />
-                                <div id="wishlist"><i class="fa-regular fa-heart"></i></div>
-                                <div id="rating"><span>{item.product_rating} <i class="fa-regular fa-star"></i></span></div>
+                                <img id="card_img" src={item.thumbnail} className="card-img-top" alt="model" height="350px" />
+                                <div id="wishlist">
+                                    <i className="fa-regular fa-heart" onClick={() => addToWishlist(item.brand)}></i>
+                                </div>
+                                <div id="rating"><span>{item.product_rating} <i className="fa-regular fa-star"></i></span></div>
                             </div>
                             <Link to={'/product/' + item.brand} key={item._id} style={{textDecoration: 'none'}}>
-                                <div class="card-body">
-                                    <h5 class="card-title" style={{fontWeight: 600, letterSpacing: 2}}>{item.brand}</h5>
-                                    <p class="card-text" style={{letterSpacing: 0.5, fontWeight: 500, fontSize: 16}}>{item.product_name}</p>
-                                    <p class="card-text" style={{letterSpacing: 1}}>Rs. {item.price} <s>Rs {Number(item.price)+500}</s> <span style={{fontWeight: 600, letterSpacing: 1}}> ({Math.round((Number(item.price)/parseInt(Number(item.price) + 500))*100)}% OFF)</span></p>
+                                <div className="card-body">
+                                    <h5 className="card-title" style={{fontWeight: 600, letterSpacing: 2}}>{item.brand}</h5>
+                                    <p className="card-text" style={{letterSpacing: 0.5, fontWeight: 500, fontSize: 16}}>{item.product_name}</p>
+                                    <p className="card-text" style={{letterSpacing: 1}}>Rs. {item.price} <s>Rs {Number(item.price)+500}</s> <span style={{fontWeight: 600, letterSpacing: 1}}> ({Math.round((Number(item.price)/parseInt(Number(item.price) + 500))*100)}% OFF)</span></p>
                                 </div>
                             </Link>
                         </div>
