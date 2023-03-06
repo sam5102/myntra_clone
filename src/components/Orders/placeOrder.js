@@ -11,7 +11,7 @@ const url = "https://myntra-clone.onrender.com/product_detail/"
 export default class placeOrder extends Component {
   constructor(props) {
     super(props)
-    let userData = JSON.parse(sessionStorage.getItem('userInfo'))
+    let userData = JSON.parse(sessionStorage.getItem('user_info'))
     this.state = {
       id: Math.floor(Math.random() *10000),
       product: this.props.match.params.orderName,

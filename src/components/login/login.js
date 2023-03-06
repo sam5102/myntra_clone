@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 import { notification } from 'antd';
 import Header from '../Header';
 
-const url = "http://3.17.216.66:5000/api/auth/login"
+//const url = "http://3.17.216.66:5000/api/auth/login"
+//const url = "https://developerjwt.herokuapp.com/api/auth/login"
+const url = "https://login-auth-f3v6.onrender.com/api/auth/login"
 
 export default class Login extends Component {
   constructor(props) {
@@ -34,6 +36,7 @@ export default class Login extends Component {
     })
     .then((res) => res.json())
     .then((data) => {
+      console.log(data);
         if (data.auth === false) {
             this.setState({message: data.token})
         } else {

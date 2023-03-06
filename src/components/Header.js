@@ -6,7 +6,9 @@ import axios from 'axios';
 import { Badge, notification } from 'antd';
 
 const categoryUrl = "https://myntra-clone.onrender.com/categories"
-const url = "http://3.17.216.66:5000/api/auth/userinfo"
+//const url = "http://3.17.216.66:5000/api/auth/userinfo"
+//const url = "https://developerjwt.herokuapp.com/api/auth/userinfo"
+const url = "https://login-auth-f3v6.onrender.com/api/auth/userinfo"
 
 class Header extends Component {
     constructor(props) {
@@ -17,7 +19,8 @@ class Header extends Component {
             totalOrders: 0,
             userData: '',
             products: [],
-            searchText: ''
+            searchText: '',
+            city: ""
         }
     }
 
@@ -29,7 +32,6 @@ class Header extends Component {
             this.setState({navData: data})
         })
         this.getUserInfo()
-        this.totalOrders()
         this.checkLocation()
         this.fetchProductName()
     }
@@ -44,8 +46,11 @@ class Header extends Component {
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
-            sessionStorage.setItem("user_info", JSON.stringify(data))
-            this.setState({userData: data})
+            if (data.token !== "Invalid Token") {
+                sessionStorage.setItem("user_info", JSON.stringify(data))
+                this.setState({userData: data})
+                this.totalOrders(data.email)
+            }
         })
     }
 
@@ -59,8 +64,8 @@ class Header extends Component {
         this.props.history.push('/')
     }
 
-    totalOrders = () => {
-        axios.get("https://myntra-clone.onrender.com/viewOrder").then((res) => {
+    totalOrders = (email_id) => {
+        axios.get("https://myntra-clone.onrender.com/viewOrder/" + email_id).then((res) => {
             this.setState({totalOrders: res.data.length})
         })
     }
@@ -80,6 +85,14 @@ class Header extends Component {
             this.props.history.push('/wishlist/' + this.state.userData.email)
         } else {
             alert("Please login to check wishlist")
+        }
+    }
+
+    goToViewOrder = () => {
+        if (this.state.userData.name) {
+            this.props.history.push('/viewOrders/' + this.state.userData.email)
+        } else {
+            alert("Please login to check Orders")
         }
     }
 
@@ -135,7 +148,7 @@ class Header extends Component {
                         myTemp = getData.list[0].temp.night
                 }
 
-                this.setState({temperature: Math.round(myTemp)})
+                this.setState({temperature: Math.round(myTemp), city: getData.city.name})
                 console.log(getData, getData.list[0].temp, myTemp);
             })
         } else {
@@ -221,15 +234,13 @@ class Header extends Component {
                         <i className="fa-regular fa-heart" id="nav_icon" style={{fontSize: 20, marginTop:10}} 
                         onClick={this.goToWishlist}></i>
                         
-                        <Link className="navbar-brand" to="/viewOrders" style={{marginRight: 12, color: 'black'}}>
                         <Badge count={this.state.totalOrders}>
-                            <i className="fa-sharp fa-solid fa-bag-shopping" id="nav_icon" style={{position: 'relative', fontSize: 20}}>
+                            <i className="fa-sharp fa-solid fa-bag-shopping" id="nav_icon" style={{position: 'relative', fontSize: 20, marginTop: 10}} onClick={this.goToViewOrder}>
                             </i>
                         </Badge>
                             
-                        </Link>
                             <Link className="navbar-brand" to="/" style={{marginRight: 12, color: 'black'}}>
-                                <div data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on bottom" style={{marginTop: 2}}>
+                                <div data-bs-toggle="tooltip" data-bs-placement="left" title={this.state.city} style={{marginTop: 2}}>
                                     <i className="fa-solid fa-cloud" id="nav_icon" style={{marginTop: 5, fontSize: 20}}></i>
                                     <p id="weather-info">{this.state.temperature}&#8451;</p>
                                 </div>

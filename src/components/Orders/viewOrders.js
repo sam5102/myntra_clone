@@ -4,7 +4,7 @@ import DisplayOrder from './DisplayOrder'
 import Header from '../Header'
 import loader from '../../images/giphy.gif'
 
-const orderApi = "https://myntra-clone.onrender.com/viewOrder"
+const orderApi = "https://myntra-clone.onrender.com/viewOrder/"
 //http://localhost:9500/viewOrder
 
 class viewOrders extends Component {
@@ -29,7 +29,8 @@ class viewOrders extends Component {
     }
   
     componentDidMount() {
-        axios.get(orderApi).then((res) => {
+        let mailId = this.props.match.params.emailId
+        axios.get(`${orderApi}${mailId}`).then((res) => {
             console.log(res.data);
             this.setState({orders: res.data})
         })

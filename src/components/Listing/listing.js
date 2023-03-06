@@ -5,12 +5,25 @@ import Header from '../Header';
 
 const url = "https://myntra-clone.onrender.com/products?categoryId="
 //http://localhost:9500/products?categoryId=
+const filterUrl = "https://myntra-clone.onrender.com/products/"
 
 const Listing = ({ match }) => {
   const [itemList, setItemList] = useState([]);
+  const [names, setNames] = useState([])
 
   useEffect(() => {
-    let categoryId = match.params.category;
+    productList()
+  }, [match.params.category]);
+
+  const filterBrand = (categoryName, filterId) => {
+    axios.get(`${filterUrl}${categoryName}?brand=${filterId}`).then((res) => {
+        console.log(res.data, "sdfsdfds");
+        setItemList(res.data);
+      });
+}
+
+const productList = () => {
+  let categoryId = match.params.category;
     if (categoryId === "Decoration & Lighting") {
         categoryId = "Decoration-Lighting"
     }
@@ -18,14 +31,14 @@ const Listing = ({ match }) => {
     axios.get(`${url}${categoryId}`).then((res) => {
       console.log(res.data, categoryId);
       setItemList(res.data);
+      setNames(res.data);
     });
-  }, [match.params.category]);
+}
 
-  console.log(itemList);
   return (
     <>
       <Header />
-      <ListingDisplay listData={itemList} />
+      <ListingDisplay listData={itemList} filterBrand={filterBrand} productList={productList} filterQuery={names}/>
     </>
   );
 };

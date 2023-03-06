@@ -37,7 +37,7 @@ const Routing = () => {
             <Route path="/listing/:category" component={Listing}/>
             <Route path="/product/:productName" component={productDetail}/>
             <Route path="/placeOrder/:orderName" component={placeOrder}/>
-            <Route path="/viewOrders" component={viewOrders}/>
+            <Route path="/viewOrders/:emailId" component={viewOrders}/>
             <Route path="/wishlist/:emailId" component={wishlist}/>
             <Route path="/login" component={Login}/>
             <Route path="/Register" component={Register}/>

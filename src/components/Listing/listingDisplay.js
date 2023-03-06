@@ -2,14 +2,18 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useHistory } from "react-router";
 import { notification } from 'antd';
+import axios from 'axios';
 import './listing.css'
 
 import loader from '../../images/giphy.gif'
+import { useEffect } from 'react';
 
 const wishlist = "https://myntra-clone.onrender.com/addToWishlist"
+
+
 const ListingDisplay = (props) => {
     const history = useHistory()
-
+    
     const addToWishlist = (productName) => {
         if (sessionStorage.getItem('access_token') == null) {
             alert("Please login to add in wishlist")
@@ -41,6 +45,7 @@ const ListingDisplay = (props) => {
     }
 
     const renderData = ({listData}) => {
+        
         if (listData) {
             if (listData.length > 0) {
                 return listData.map((item) => {
@@ -75,13 +80,14 @@ const ListingDisplay = (props) => {
         }
     }
 
-    const brands = ({listData}) => {
-        if (listData) {
-            if (listData.length > 0) {
-                return listData.map((item) => {
+
+    const brands = ({filterQuery}) => {
+        if (filterQuery) {
+            if (filterQuery.length > 0) {
+                return filterQuery.map((item) => {
                     return (
                         <div key={item._id}>
-                            <input type="radio" name="options" id="all" /><span style={{letterSpacing: 1}}>{item.brand}</span>
+                        <input type="radio" name="options" id="all"onClick={() => props.filterBrand(item.category, item.brand)} /><span style={{letterSpacing: 1}}>{item.brand}</span>
                         </div>
                     )
                 })
@@ -98,6 +104,9 @@ const ListingDisplay = (props) => {
             <hr />
             <h5 style={{letterSpacing: 2}}>Brands</h5>
             {brands(props)}
+            <div>
+                <input type="radio" name="options" id="all" onClick={() => props.productList()}/><span>All</span>
+            </div>
             {/* <div>
                 <input type="radio" name="options" id="all" /><span>Roadster</span>
             </div>

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import Header from '../Header'
 
-const url = "http://3.17.216.66:5000/api/auth/register"
+//const url = "http://3.17.216.66:5000/api/auth/register"
+//const url = "https://developerjwt.herokuapp.com/api/auth/register"
+const url = "https://login-auth-f3v6.onrender.com/api/auth/register"
 
 export default class Register extends Component {
   constructor(props) {
@@ -28,8 +30,6 @@ export default class Register extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(this.state)
-    }).then((res) => {
-      console.log(res.json());
     })
     .then(() => alert("Successfully Registered! Please Login to continue"))
     .then(this.props.history.push('/login'))
